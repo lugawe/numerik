@@ -30,6 +30,8 @@ Rolle.
 
 == Geometrische Anschauung (Luis)
 
+Der Ausdruck $lambda v$ lässt sich wie folgt geometrisch darstellen: 
+
 #figure(
   image("plot_eigen1.png", width: 80%),
   caption: [Vektor und skalierter Vektor],
