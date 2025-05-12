@@ -16,7 +16,17 @@
 
 = Eigenwerte und Eigenvektoren
 
-Eine Matrix *$A$* kann auf einen Spaltenvektor *$x$* angewendet werden, was eine *lineare Transformation* von *$x$* darstellt.
+== Einführung (Luis)
+
+Eigenwerte und Eigenvektoren spielen in vielen Bereichen unseres Lebens eine entscheidende
+Rolle.
+
+== Geometrische Anschauung (Luis)
+
+== Formel (Gülsüm)
+
+Eine quadratische Matrix *$A$* kann mit einem Spaltenvektor *$x$* multipliziert werden, wobei
+das Ergebnis wieder ein Spaltenvektor ist.
 
 Es gibt eine besondere Form dieser Transformation:
 
@@ -30,7 +40,59 @@ Dabei gilt:
 Jeder Wert von *$lambda$*, der diese Gleichung erfüllt, wird als *Eigenwert* der Matrix *$A$* bezeichnet.
 Der zugehörige Vektor *$x$* wird als *Eigenvektor* zum Eigenwert *$lambda$* bezeichnet.
 
-== Motivation hinter Eigenwerten und Eigenvektoren
+== Lösungsverfahren (Gülsüm)
+
+Was ist der Ansatz um ein Eigenwertproblem zu berechen?
+
+=== Einfaches Beispiel
+-> Determinantenverfahren 2x2 Matrix um die Eingenwerte zu berechenn
+
+1 bis 2 Eigenwerte einsetzen und damit dann $lambda_1$ bzw. $lambda_2$ in die Matrix einsetzen und damit den Eigenvektor berechnen über den Gauß-Algorythmus.
+
+=== Komplexeres Beispiel
+-> Determinantenverfahren 5x5 Matrix
+-> Polynom vom 5. Grad -> Was nun?
+
+== Python-Beispiele (Luis)
+
+= Anwendungen
+
+== Google PageRank (Michael)
+
+=== Allgemein
+
+=== Verfahren
+
+==== Markov-Ketten
+
+=== Zurück zum Eigenwertproblem
+
+== Kompression & Bildverarbeitung
+
+== Datenanalyse (Wichtig für KI)
+
+== Ausblick in die Wissenschaft
+
+//Notizen
+
+Eigenwerte und Eigenvektoren
+
+Eine Matrix *$A$* kann auf einen Spaltenvektor *$x$* angewendet werden, was
+eine *lineare Transformation* von *$x$* darstellt.
+
+Es gibt eine besondere Form dieser Transformation:
+
+$ A x = lambda x $
+
+Dabei gilt:
+- *$A$* ist eine $n times n$ Matrix.
+- *$x$* ist ein $n times 1$ Spaltenvektor (wobei $x eq.not 0$).
+- *$lambda$* ist ein Skalar.
+
+Jeder Wert von *$lambda$*, der diese Gleichung erfüllt, wird als *Eigenwert* der Matrix *$A$* bezeichnet.
+Der zugehörige Vektor *$x$* wird als *Eigenvektor* zum Eigenwert *$lambda$* bezeichnet.
+
+Motivation hinter Eigenwerten und Eigenvektoren
 
 - *Grundidee:*
   - Eigenwerte und Eigenvektoren helfen uns, die Eigenschaften von linearen Transformationen besser zu verstehen und Probleme zu vereinfachen.
@@ -52,7 +114,7 @@ Der zugehörige Vektor *$x$* wird als *Eigenvektor* zum Eigenwert *$lambda$* bez
 
 #pagebreak()
 
-== Python-Beispiel: Eigenvektoren plotten
+Python-Beispiel: Eigenvektoren plotten
 
 Sehen wir uns ein Beispiel an, um die Transformation eines Vektors durch eine Matrix zu visualisieren.
 
@@ -64,10 +126,10 @@ Matrix $A$ gegeben ist als $A = mat(2, 0; 0, 1)$.
 #let plot_example1 = read("plot_example1.py")
 #raw(plot_example1, lang: "python")
 
-=== Grafik einfügen
+Grafik einfügen
 image("eigenvector_plot.png", width: 80%)
 
-=== Plot-Ergebnis
+Plot-Ergebnis
 
 Der Plot zeigt die beiden Vektoren:
 
@@ -78,7 +140,7 @@ Die Grafik veranschaulicht die *Streckung* und die minimale *Rotation* des Vekto
 
 #pagebreak()
 
-== Grundlagen
+Grundlagen
 
 $
   mat(
@@ -89,7 +151,7 @@ $
   )
 $
 
-=== Matrizen Wiederholung
+Matrizen Wiederholung
 
 Vektorraum und Vektoren
 
@@ -97,7 +159,7 @@ Matrix Generell
 
 Determinante
 
-==== Python Beispiel: Multiplikation / Determinante mit numpy
+Python Beispiel: Multiplikation / Determinante mit numpy
 
 Matrix Multiplikation:
 
@@ -113,26 +175,33 @@ b = np.array([[4, 1],
 result = np.matmul(a, b)
 ```
 
-=== Charakeristisches Polynom
+Charakeristisches Polynom
 
-=== Spektralsatz (Wichtig für z.B. Bildverarbeitung/Kompression)
+Spektralsatz (Wichtig für z.B. Bildverarbeitung/Kompression)
 
-== Berechnung von Eigenwerten & Eigenvektoren
+Berechnung von Eigenwerten & Eigenvektoren
 
-=== Python Beispiel: Berechnung
+Python Beispiel: Berechnung
 
-== Geometrische Anschauung
+Geometrische Anschauung
 
-== Anwendungen
+Anwendungen
 
 
 
-= Anwendungen in der Numerik
+Anwendungen in der Numerik
 
-== Google PageRank
+Google PageRank
 
-== Markov-Ketten
+Allgemein
 
-== Kompression & Bildverarbeitung
+Verfahren
 
-== Datenanalyse (Wichtig für KI)
+Markov-Ketten
+
+Zurück zum Eigenwertproblem
+
+
+Kompression & Bildverarbeitung
+
+Datenanalyse (Wichtig für KI)
