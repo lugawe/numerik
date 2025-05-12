@@ -14,6 +14,13 @@
 
 #pagebreak()
 
+#outline(
+  title: [Abbildungen],
+  target: figure.where(kind: image),
+)
+
+#pagebreak()
+
 = Eigenwerte und Eigenvektoren
 
 == Einführung (Luis)
@@ -22,6 +29,11 @@ Eigenwerte und Eigenvektoren spielen in vielen Bereichen unseres Lebens eine ent
 Rolle.
 
 == Geometrische Anschauung (Luis)
+
+#figure(
+  image("plot_eigen1.png", width: 80%),
+  caption: [Vektor und skalierter Vektor],
+) <plot_eigen1>
 
 == Formel (Gülsüm)
 
@@ -205,3 +217,14 @@ Zurück zum Eigenwertproblem
 Kompression & Bildverarbeitung
 
 Datenanalyse (Wichtig für KI)
+
+
+
+#pagebreak()
+
+= Anhang
+
+== Code zu @plot_eigen1
+
+#let plot_eigen1 = read("plot_eigen1.py")
+#raw(plot_eigen1, lang: "python")
