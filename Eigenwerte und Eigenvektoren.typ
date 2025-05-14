@@ -222,6 +222,68 @@ $ lambda = (5 ± 5.744) /
  Die Eigenwerte der Matrix A sind:
  $ λ 1 = 5.561, λ 2 = −0.561 $
 
+== Bestimmung der Eigenvektoren
+Um einen Eigenvektor zu berechnen, braucht man zuerst den zugehörigen Eigenwert.
+
+- Schreibe das lineare Gleichungssystem (A−λI)v=0 explizit auf, wobei die Unbekannten die Komponenten des Vektors v sind.
+
+
+- Wir lösen das System mit einem Verfahren wie dem Gauß-Algorithmus.
+
+- Wenn die Matrix A−λI nicht invertierbar (singulär) ist, hat das System keine eindeutige Lösung.
+
+  In diesem Fall wählen wir eine der Unbekannten beliebig und berechnen die anderen daraus
+
+  *Beispiel 2*
+   Ermitteln Sie die Eigenwerte für die Matrix $ mat(0, 2; 2, 3;)$  
+   Die charakteristische Gleichung gibt uns
+   $ mat(0-λ, 2;
+        2, 3-λ) =0 $
+
+Deshalb haben wir
+$ −λ(3−λ)−4=0⇒λ 2−3λ−4=0  $
+
+Wir erhalten zwei Eigenwerte:
+$ λ_1=4, λ_2=−1$
+
+*VERSUCHEN SIE ES!* Ermitteln Sie die Eigenvektoren für die beiden obigen Eigenwerte.
+
+*a)*  $lambda_1$  = 4:
+
+Um den ersten Eigenvektor zu bestimmen, setzen wir $lambda_1$  = 4 in die Gleichung A−λI=0 ein:
+
+$ mat(0-4, 2;
+        2, 3-4) dot vec(x_1,x_2) = vec(0,0)  $
+
+$ mat(-4,2;
+      2, -1;) dot vec(x_1,x_2) = vec(0,0) $
+
+Dies ergibt zwei Gleichungen:
+$ -4 x_1 + 2 x_2 = 0 $
+$ 2 x_1 -x_2 = 0 $
+Beide Gleichungen zeigen, dass $x_2$ = $2x_1$ ist. Daher kann der erste Eigenvektor wie folgt dargestellt werden:
+
+$ x_1 = k_1 vec(1,2) $
+
+Hierbei ist $k_1$ ein Skalar (mit $k_1 eq.not 0$), solange das Verhältnis zwischen $x_2$ und $x_1$ gleich 2 ist, handelt es sich um einen Eigenvektor.
+
+​Wir können überprüfen, ob der Vektor $vec(1,2)$ ein Eigenvektor ist, indem wir ihn in die Matrix einsetzen:
+$ mat(0, 2; 2, 3;) dot vec(1,2) = vec(4,8) = 4 vec(1,2) $ 
+
+*b)*  $lambda_2$ = -1
+Auf ähnliche Weise setzen wir $lambda_2 = -1 $ ein und erhalten den zweiten Eigenvektor: 
+
+$(A - λ I) dot v = 0$ 
+$ mat(0, 2; 2, 3;) dot vec(x_1, x_2) = vec(0,0)$  
+
+Dies ergibt das Gleichungssystem: 
+1. $x_1 + 2x_2 = 0$  
+2. $2x_1 + 4x_2 = 0$  
+
+Da die zweite Gleichung ein Vielfaches der ersten ist, betrachten wir nur die erste:  
+$ x_1 = -2x_2 $
+$ x_2 = k_2 vec(-2,1) $ wobei $k_2 eq.not 0 $
+
 Was ist der Ansatz um ein Eigenwertproblem zu berechen?
 
 === Einfaches Beispiel
