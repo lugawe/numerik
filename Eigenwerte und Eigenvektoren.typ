@@ -133,14 +133,130 @@ Was ist der Ansatz um ein Eigenwertproblem zu berechen?
 = Anwendungen
 
 == Google PageRank (Michael)
+Google PageRank ist ein Algorithmus, der von Google entwickelt wurde um Webseiten bei einer Suchanfrage zu bewerten und dementsprechend zu sortieren. Webseiten sind untereinander über Hyperlinks verbunden. Die Idee des Algorithmus ist nun, dass Webseiten, welche von mehreren anderen Webseiten referenziert werden als wichtiger eingestuft werden. Diese Wichtigkeit wird durch einen mathematischen Ansatz von Eigenwerten und Eigenvektoren definiert.
 
-=== Allgemein
+Man kann sich das Verfahren gut als einen gerichteten Graphen vorstellen, bei dem Webseiten durch Knoten dargestellt werden und Kanten die Hyperlinks darstellen. Die Rang einer Webseite wird dann iterativ berechnet, wobei beachtet wird, wie viele eingehende Links diese Webseite hat und welcher Rang die Webseiten haben die diese Webseite referenzieren.
+
+Hier ist ein Beispiel eines Graphen
+#import "@preview/diagraph:0.3.3" : *
+$
+#raw-render(
+```dot
+digraph PageRank {
+  rankdir=LR;
+  splines=ortho;
+  overlap=true;
+  nodesep=0.75;
+  ranksep=0.75;
+
+
+  { rank = min; Facebook; THWS; }
+
+  { rank = same; Youtube; }
+
+  { rank = max; Amazon; Netflix; }
+
+  Facebook -> { Youtube Amazon THWS };
+  Youtube  -> { Facebook THWS Netflix };
+  Amazon   -> { Netflix Youtube };
+  THWS     -> { Youtube Facebook };
+  Netflix  -> { Amazon };
+}
+```)
+$
 
 === Verfahren
+Die Grundlegende Idee hinter dem PageRank Algorithmus ist durch eine Markov-Kette definiert. Das Internet ist als großer Graph dargestellt, bei dem jede Webseite ein State einer Markov-Kette ist. Ein Nutzer (oder auch "random surfer") kann sich von einer Webseite zur nächsten über das klicken von links bewegen. Die Wahrscheinlichkeit, dass der Nutzer nach einer Anzahl an klicks auf einer gewissen Webseite landet, ist abhäüngig von der Struktur des Internets und der Hyperlinkverteilung.
 
 ==== Markov-Ketten
+In einer Markov-Kette werden die Übergangswahrscheinlichkeiten zwischen Zuständen (in diesem Fall Seiten) durch eine Übergangsmatrix dargestellt. Die Elemente dieser Matrix stellen die Wahrscheinlichkeit dar, von einer Seite zu einer anderen zu wechseln. Um den PageRank zu berechnen, wird die Übergangsmatrix auf aufeinanderfolgende Potenzen erhöht und das Eigenwertproblem gelöst, um den stabilen Zustand dieses Prozesses zu finden.
+
+Der Prozess kann mathematisch wie folgt dargestellt werden:
+
+$
+p = M p
+$
+
+Wobei:
+    - *$p$* ist der PageRank-Vektor (die Wahrscheinlichkeitsverteilung über die Seiten).
+    - *$M$* ist die Übergangsmatrix, die die Webstruktur darstellt.
+
+Da das Web jedoch extrem groß ist und viele Seiten mit unterschiedlichen Linkstrukturen enthält, ist die direkte Berechnung des PageRank unpraktisch. Stattdessen wird eine Näherungsmethode namens Power Iteration verwendet, um den Eigenvektor zu ermitteln, der dem Eigenwert 1 (dem Haupteigenvektor) entspricht, der die stationäre Verteilung eines zufälligen Surfers darstellt.
 
 === Zurück zum Eigenwertproblem
+Der Lösungsprozess für PageRank kann auf ein Eigenwertproblem reduziert werden. Aus der linearen Algebra wissen wir, dass, wenn eine Matrix *$M$* einen Eigenwert von 1 hat, es einen von Null verschiedenen Eigenvektor *$p$* gibt, so dass:
+
+$
+M p = p
+$
+
+Das bedeutet, dass der Eigenvektor $p$ der Gleichgewichtsvektor ist, der sich nach wiederholter Anwendung der Übergangsmatrix $M$ nicht ändert. Im Zusammenhang mit PageRank entspricht dieser Eigenvektor der relativen Wichtigkeit oder dem Ranking jeder Seite im Web.
+
+Der PageRank-Vektor kann durch die folgenden Schritte ermittelt werden:
+
+- *Initialisierung:* Beginnen Sie mit einer beliebigen Wahrscheinlichkeitsverteilung über alle Seiten, häufig eine Gleichverteilung, bei der jede Seite die gleiche Wahrscheinlichkeit hat.
+
+- *Iteration:* Multiplizieren Sie den aktuellen Wahrscheinlichkeitsvektor mit der Übergangsmatrix *$M$* (oder verwenden Sie eine leicht modifizierte Version, um zufällige Sprünge zu berücksichtigen), und zwar so lange, bis der Vektor zu einem stabilen Zustand konvergiert.
+
+- *Konvergenzprüfung:* Die Iteration wird so lange fortgesetzt, bis die Änderung des PageRank-Vektors zwischen zwei aufeinanderfolgenden Iterationen kleiner als ein vorgegebener Schwellenwert ist, was bedeutet, dass der Algorithmus konvergiert hat.
+
+In der Praxis bedeutet dies, dass der größte Eigenwert (*1*) der Übergangsmatrix *$M$* gesucht wird. Der entsprechende Eigenvektor stellt die relative Wichtigkeit (PageRank) der einzelnen Webseiten dar.
+
+=== Markov-Ketten und Eigenwertproblem
+
+Die Verbindung zum Eigenwertproblem ergibt sich daraus, dass die PageRank-Berechnung auf der Suche nach dem dominanten Eigenvektor einer stochastischen Matrix (der Übergangsmatrix des Webgraphen) beruht.
+
+Die Übergangsmatrix *$M$* ist eine stochastische Matrix, was bedeutet, dass jede Spalte die Summe 1 ergibt und ihre Eigenwerte innerhalb des Einheitskreises in der komplexen Ebene liegen. Wenn man den Eigenvektor findet, der dem Eigenwert 1 entspricht, kann man die stationäre Verteilung der Markov-Kette berechnen, was genau das ist, was PageRank berechnet.
+
+Betrachten wir das Beispiel des oberen Graphen:
+$
+#raw-render(
+```dot
+digraph PageRank {
+  rankdir=LR;
+  splines=ortho;
+  overlap=true;
+  nodesep=0.75;
+  ranksep=0.75;
+
+
+  { rank = min; Facebook; THWS; }
+
+  { rank = same; Youtube; }
+
+  { rank = max; Amazon; Netflix; }
+
+  Facebook -> { Youtube Amazon THWS };
+  Youtube  -> { Facebook THWS Netflix };
+  Amazon   -> { Netflix Youtube };
+  THWS     -> { Youtube Facebook };
+  Netflix  -> { Amazon };
+}
+```)
+$
+
+Die Pfeile zeigen an, welche Websites Links zu anderen Websites haben. Ziel ist es, dasselbe Konzept des PageRank mit Hilfe von Eigenwerten und Eigenvektoren anzuwenden, um die Bedeutung jeder Website auf der Grundlage der Linkstruktur zu berechnen.
+
+Die Übergangsmatrix *$M$* ist eine stochastische Matrix, was bedeutet, dass jede Spalte die Summe *1* ergibt und ihre Eigenwerte innerhalb des Einheitskreises in der komplexen Ebene liegen. Wenn man den Eigenvektor findet, der dem Eigenwert 1 entspricht, kann man die stationäre Verteilung der Markov-Kette berechnen, was genau das ist, was PageRank berechnet.
+
+Wir können den Graphen als Übergangsmatrix *$M$* darstellen, wobei jede Zeile und Spalte einer der Websites entspricht. Der Wert in Zeile *$i$* und Spalte *$j$* steht für die Wahrscheinlichkeit, dass ein zufälliger Surfer von Website *$i$* zu Website *$j$* wechselt.
+
+In diesem Fall können wir von einem einfachen Ansatz ausgehen, bei dem eine Website mit mehreren ausgehenden Links die gleiche Wahrscheinlichkeit auf ihre Links verteilt. Websites ohne ausgehende Links (wie die THWS) werden mit einem Teleportationsfaktor behandelt (zufälliger Sprung zu einer beliebigen Website).
+
+Hier ist die Übergangsmatrix *$M$* auf der Grundlage des Graphen:
+
+$
+M = mat(
+  -,  F,    Y,    A,    T,    N;
+  F,  0,    1/3,  1/3,  1/3,  0;
+  Y,  1/3,  0,    0,    1/3,  1/3;
+  A,  0,    1/2,  0,    0,    1/2;
+  T,  1/2,  1/2,  0,    0,    0;
+  N,  0,    0,    1,    0,    0;
+)
+$
+
+Zur Berechnung des stationären Vektors (PageRank-Vektor) wird der Eigenvektor mit dem Eigenwert 1 ermittelt. Dazu kann die Potenziteration oder ein anderer Eigenwertalgorithmus verwendet werden. Der resultierende PageRank-Vektor gibt die relative Bedeutung jeder Seite im Netz an.
 
 == Kompression & Bildverarbeitung
 
