@@ -115,7 +115,112 @@ Dabei gilt:
 Jeder Wert von *$lambda$*, der diese Gleichung erfüllt, wird als *Eigenwert* der Matrix *$A$* bezeichnet.
 Der zugehörige Vektor *$x$* wird als *Eigenvektor* zum Eigenwert *$lambda$* bezeichnet.
 
+*Bemerkung*
+
+*1.* Dass der Null vektor, nennen wir ihn 0, als Eigenvektor nicht zulässig ist, liegt daran, dass die Gleichung
+
+ $ A 0 = lambda 0 $  
+                                                
+für jede Matrix A und jede Zahl λ erfüllt ist und somit keinerlei Erkenntnisgewinn bringt   
+
+*2.* Ein Eigenvektor ist niemals eindeutig bestimmt. Hat man nämlich zu gegebener
+ Matrix A einen Vektor v und eine Zahl λ gefunden, sodass Av = λv gilt, so kann
+ man diesen Vektor mit einer beliebigen Zahl $a eq.not 0$ multiplizieren. Die Gleichung Aαv =λαv ist wegen Aαv = αAv und λαv = αλv ebenfalls richtig, also ist 
+ auch αv ein Eigenvektor von A.
+
+
+*3.* Wie in Beispiel 2.1 schon geschrieben wurde besagt Gl.(2.2), dass der Vektor v
+ durch die Multiplikation mit der Matrix A nicht in seiner Lage verändert, sondern
+ lediglich um den Faktor λ gestreckt bzw. gestaucht sowie– falls λ negativ ist– in
+ seiner Richtung umgekehrt wird.
+
+
 == Lösungsverfahren (Gülsüm)
+== Berechnung der Eigenwerte
+
+1. Schritt: Eigenwertgleichung
+Zu Beginn haben wir die Eigenwertgleichung:
+
+$ A v = λ v $  
+Dabei ist:
+
+*A* eine Matrix,
+
+*v* ein Eigenvektor,
+
+*λ* der Eigenwert.
+
+
+Um die Gleichung zu vereinfachen, fügen wir die *Einheitsmatrix I* auf der rechten Seite hinzu. Die Einheitsmatrix verändert einen Vektor nicht, da *Iv=v* gilt. Daher wird die Gleichung zu:
+
+ $ A v = λ I v $
+
+
+Nun bringen wir alle Terme auf die linke Seite der Gleichung und erhalten:
+                          
+$ A v − λ I v = 0 $ 
+Dies lässt sich als:
+$ ( A − λ I ) v=0 $
+umformen. Das Produkt der Matrix (A − λI) mit dem Vektor v muss also den Nullvektor ergeben.
+
+
+Da v als Eigenvektor nicht der Nullvektor sein darf,  muss die Matrix A−λI einen Rangverlust haben, also die Determinante null sein. 
+
+// 
+/*Satz 2.1
+Es sei A eine (n ×n)-Matrix und I die gleichgroße Einheitsmatrix. Eine Zahl
+λ ist genau dann Eigenwert von A, wenn
+                        
+                             det(A − λI) = 0
+ist.
+}*/
+
+Daher gilt:
+$ det ( A − λ I ) = 0 $
+Diese Gleichung stellt ein Polynom in Bezug auf $lambda$ dar, das als *charakteristisches Polynom* bezeichnet wird. Um die Eigenwerte der Matrix A zu bestimmen, lösen wir dieses Polynom nach $lambda$ auf.
+
+Da das charakteristische Polynom ein Polynom n-ten Grades ist, hat es höchstens n Nullstellen. Das bedeutet, dass die Matrix A höchstens n Eigenwerte besitzt.
+
+*Beispiel 1*
+
+Ermitteln Sie die Eigenwerte für die Matrix
+$ A = mat(1,2;
+3,4;) $
+
+ Berechnen wir nun A−λ·I:
+ 
+  A − λ · I = $ mat(1-λ, 2;
+              3, 4−λ;)$ 
+              
+Die Determinante ist:
+
+det(A −λ·I) = (1−λ)(4−λ)−2·3 
+
+Nun haben wir die charakteristische Gleichung:
+
+$ λ^2 − 5 λ − 2 = 0 $  
+
+
+Wir lösen dieses Polynom, um die Eigenwerte zu finden Dafür wenden wir die Mitternachtsformel an:
+
+$ lambda = (−b ± sqrt(b^2 - 4 dot a dot c) ) /
+( 2 dot a) $
+
+$ lambda = (5 ± sqrt((-5)^2 - 4 dot 1 dot -2) ) /
+( 2 dot 1) $
+
+$ lambda = (5 ± sqrt(25+8) ) /
+( 2 ) $
+$ lambda = (5 ± sqrt(33) ) /
+( 2 ) $
+$ lambda = (5 ± 5.744) /
+( 2 ) $
+
+
+ $ λ 1 = 5.561, λ 2 = −0.561 $
+ 
+ Die Eigenwerte der Matrix A sind:
+ $ λ 1 = 5.561, λ 2 = −0.561 $
 
 Was ist der Ansatz um ein Eigenwertproblem zu berechen?
 
