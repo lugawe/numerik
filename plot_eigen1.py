@@ -16,13 +16,12 @@ ax.set_ylim(-1, 4)
 ax.set_aspect("equal")
 
 ax.quiver(
-    0, 0, v[0], v[1], angles="xy", scale_units="xy", scale=1, color="blue", label="v"
-)
-
-ax.quiver(
     0, 0, lambda_v[0], lambda_v[1], angles="xy", scale_units="xy", scale=1, color="red", label="λ * v",
 )
 
+ax.quiver(
+    0, 0, v[0], v[1], angles="xy", scale_units="xy", scale=1, color="blue", label="v"
+)
 
 plt.axhline(0, color="gray", linewidth=0.5)
 plt.axvline(0, color="gray", linewidth=0.5)
