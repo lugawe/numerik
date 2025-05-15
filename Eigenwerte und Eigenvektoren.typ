@@ -287,6 +287,46 @@ $ x_2 = k_2 vec(-2,1) $ wobei $k_2 eq.not 0 $
 Was ist der Ansatz um ein Eigenwertproblem zu berechen?
 
 === Einfaches Beispiel
+=== Einfaches Beispiel
+Gegeben sei die Matrix
+$ A = mat(1, 2, 0;
+      2, 1, 2;
+      0, 2, 1) $
+Berechnen Sie die Eigenvektoren.
+
+*Lözung:*
+
+Schritt 1: Eigenwerte berechnen:
+1.Charakteristisches Polynom:
+ $ det(A−λ I)= det mat(2−λ,1,0;
+                    1,3−λ ,1;
+                    0,1,2−λ;)  =0 $  
+
+ Determinante berechnen:
+ 
+$  |A|= (2−λ). det mat(3−λ ,1;
+1,2−λ;) -1 dot det mat(1, 0;
+1, 2−λ;) +0 dot mat(1,0;
+1,2−λ;) $ 
+
+$ =(2−λ) dot [(3-λ) dot (2-λ)- 1 dot 1] - 1 dot [1 dot (2-λ) -0 dot 1] +0 dot [1 dot 1 - 0 dot (3-λ)] $
+
+$ = (2−λ)⋅(λ 2−5λ+5)−(2−λ)=0 $
+
+$ = (2−λ)⋅[6−5λ+λ 2 −1]−(2−λ)=0 $
+
+$ = (2−λ)[(λ−4)(λ−1)]=0 $
+
+Die Eigenwerte sind:
+
+ $  lambda_1=2, lambda_2=4, lambda_3=1 $  
+
+Schritt 2: Eigenvektoren berechnen
+Für jeden Eigenwert λ lösen wir das Gleichungssystem:
+
+$ (A - λ I) dot v = 0 $
+
+Für λ = 2
 -> Determinantenverfahren 2x2 Matrix um die Eingenwerte zu berechenn
 
 1 bis 2 Eigenwerte einsetzen und damit dann $lambda_1$ bzw. $lambda_2$ in die Matrix einsetzen und damit den Eigenvektor berechnen über den Gauß-Algorythmus.
