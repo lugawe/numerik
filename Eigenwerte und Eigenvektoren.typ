@@ -82,12 +82,13 @@ Ihre Richtung bleibt bei positivem Eigenwert erhalten, kehrt sich bei negativem 
 $
 "Vektor wird" cases(
   "gestreckt " & "für " lambda > 1 \
-  "gekürzt " & "für " 0 < lambda < 1 \
-  "umgedreht" & "für " lambda < 0 \
+  "gestaucht " & "für " 0 < lambda < 1 \
   "nicht verändert " & "für " lambda = 1 \ 
   "zu 0" & "für " lambda = 0
 )
 $
+
+Ist $lambda < 0$ wird dazu noch die Richtung umgekehrt.
 
 Diese Längenunterschiede ergeben sich durch eine Skalierung, die sich durch die
 Gleichung $arrow(v)_text("skaliert") = lambda arrow(v)$ beschreiben lässt.
