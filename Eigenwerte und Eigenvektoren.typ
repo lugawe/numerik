@@ -42,7 +42,7 @@ Diese scheinbar abstrakten mathematischen Konzepte helfen uns dabei,
 komplexe Systeme zu verstehen, Muster zu erkennen und Prozesse effizient zu gestalten.
 
 Wenn wir eine quadratische Matrix $M in RR^(n crossmark n)$ und
-einen Vektor $arrow(v) in RR^n$ multiplizieren bekommen wir als Ergebnis wieder einen
+einen Spaltenvektor $arrow(v) in RR^n$ multiplizieren bekommen wir als Ergebnis wieder einen
 Spaltenvektor. Dieser Spaltenvektor zeigt jedoch meistens in ganz verschiedene Richtungen
 und hat mit dem ursprünglichen Vektor $arrow(v)$ nichts mehr gemeinsam.
 Manchmal jedoch bekommen wir einen Vektor als Ergebnis, der sich als vielfaches
