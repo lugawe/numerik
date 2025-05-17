@@ -401,11 +401,11 @@ Das bedeutet, dass der Eigenvektor $p$ der Gleichgewichtsvektor ist, der sich na
 
 Der PageRank-Vektor kann durch die folgenden Schritte ermittelt werden:
 
-- *Initialisierung:* Beginnen Sie mit einer beliebigen Wahrscheinlichkeitsverteilung über alle Seiten, häufig eine Gleichverteilung, bei der jede Seite die gleiche Wahrscheinlichkeit hat.
+- *Initialisierung:* Begonnen wird mit einer beliebigen Wahrscheinlichkeitsverteilung über alle Seiten, häufig eine Gleichverteilung, bei der jede Seite die gleiche Wahrscheinlichkeit hat.
 
-- *Iteration:* Multiplizieren Sie den aktuellen Wahrscheinlichkeitsvektor mit der Übergangsmatrix *$M$* (oder verwenden Sie eine leicht modifizierte Version, um zufällige Sprünge zu berücksichtigen), und zwar so lange, bis der Vektor zu einem stabilen Zustand konvergiert.
+- *Iteration:* Der aktuelle Wahrscheinlichkeitsvektor wird mit der Übergangsmatrix *$M$* multipliziert. Das passiert so lange, bis der Vektor zu einem stabilen Zustand konvergiert.
 
-- *Konvergenzprüfung:* Die Iteration wird so lange fortgesetzt, bis die Änderung des PageRank-Vektors zwischen zwei aufeinanderfolgenden Iterationen kleiner als ein vorgegebener Schwellenwert ist, was bedeutet, dass der Algorithmus konvergiert hat.
+- *Konvergenzprüfung:* Die Iteration wird so lange fortgesetzt, bis die Änderung des PageRank-Vektors zwischen zwei aufeinanderfolgenden Iterationen kleiner als ein vorgegebener Schwellenwert ist d.h. bis der Algorythmus also konvergiert hat.
 
 In der Praxis bedeutet dies, dass der größte Eigenwert (*1*) der Übergangsmatrix *$M$* gesucht wird. Der entsprechende Eigenvektor stellt die relative Wichtigkeit (PageRank) der einzelnen Webseiten dar.
 
@@ -448,9 +448,9 @@ Die Übergangsmatrix *$M$* ist eine stochastische Matrix, was bedeutet, dass jed
 
 Wir können den Graphen als Übergangsmatrix *$M$* darstellen, wobei jede Zeile und Spalte einer der Websites entspricht. Der Wert in Zeile *$i$* und Spalte *$j$* steht für die Wahrscheinlichkeit, dass ein zufälliger Surfer von Website *$i$* zu Website *$j$* wechselt.
 
-In diesem Fall können wir von einem einfachen Ansatz ausgehen, bei dem eine Website mit mehreren ausgehenden Links die gleiche Wahrscheinlichkeit auf ihre Links verteilt. Websites ohne ausgehende Links (wie die THWS) werden mit einem Teleportationsfaktor behandelt (zufälliger Sprung zu einer beliebigen Website).
+In diesem Fall können wir von einem einfachen Ansatz ausgehen, bei dem eine Website mit mehreren ausgehenden Links die gleiche Wahrscheinlichkeit auf ihre Links verteilt. Websites ohne ausgehende Links werden mit einem Teleportationsfaktor behandelt.
 
-Hier ist die Übergangsmatrix *$M$* auf der Grundlage des Graphen:
+Die Übergangsmatrix *$M$* aus der Grundlage des Graphen:
 
 $
 M = mat(
@@ -465,6 +465,115 @@ $
 
 Zur Berechnung des stationären Vektors (PageRank-Vektor) wird der Eigenvektor mit dem Eigenwert 1 ermittelt. Dazu kann die Potenziteration oder ein anderer Eigenwertalgorithmus verwendet werden. Der resultierende PageRank-Vektor gibt die relative Bedeutung jeder Seite im Netz an.
 
+Der PageRank entspricht der stationären Verteilung $p$, die die Gleichung
+
+$
+p = p M
+$
+
+erfüllt. In dem Fall ist $p = (p_F, p_Y, p_A, p_T, p_N)$ ein Zeilenvektor mit $ sum_i p_i = 1 $
+
+Mathematisch ist dies also das Eigenwertproblem:
+
+$
+p(M - I) = 0, lambda=1
+$
+
+Aus der Übergangsmatrix lässt sich folgendes Gleichungssystem abbliden:
+
+$
+"LGS"(M) = cases(
+  p_F = 1/3p_Y + 1/2p_T,
+  p_Y = 1/3p_F + 1/2p_A + 1/2p_T,
+  p_A = 1/3p_F + 1p_N ,
+  p_T = 1/3p_F + 1/3p_Y,
+  p_N = 1/3p_Y + 1/2p_A,
+  p_F + p_Y + p_A + p_T + p_N = 1
+)
+$
+
+Dieses Gleichungssystem lässt sich jetzt anhand von unter anderem der Power-Iteration lösen. Power-Iteration ist ein Algorythmus, der es einfach macht den betragsgrößten Eigenwert $lambda_max$ und den zugehörigen Eigenvektor $v_max$ einer reellen Matrix $M ∈ RR^(n × n)$ zu approximieren. Die Power-Iteration nähert sich diesem Vektor durch sukzessives Anwenden von $M$. Zunächst muss der Initialvektor gewählt werden. Hier wird der Vektor $p^(0) = ( 1/n, 1/n, ... , 1/n), p^(0) ∈ RR^n$  wobei $n$ die Dimension der Matrix $M$ ist. In unserem Fall ist das also der Vektor:
+
+$
+p^(0) = (1/5, 1/5, 1/5, 1/5, 1/5)
+$
+
+Anschließend muss nun wie oben beschrieben der Zeilenvektor $p^(k)$ mit der Matrix $M$ iterativ multipliziert werden, was sich mathematisch so darstellen lässt.
+
+$
+p^(k+1) = p^(k)M
+$
+
+Üblicherweise wird zusätzlich ein Dämpfungsfaktor $alpha ∈ (0,1)$ verwendet, sodass auch "Dangling Nodes", also Webseiten ohne ausgehende Hyperlinks korrekt behandelt werden und das Verfahren effizienter konvergiert. Das lässt sich dann wiefolgt darstellen:
+
+$
+p^(k+1) = alpha p^(k) M + (1-a)/n (1, 1, ... 1)
+$
+
+Der Term $(1-alpha)/n (1, 1, ... 1)$ verteilt die restliche Wahrscheinlichkeit auf alle Seiten, wodurch der Dämpfungsfaktor erfolgreich eingebunden ist.
+
+Dieser Prozess wird nun so lange wiederholt, bis ein der Algorythmus konvergiert. Das wird anhand einen Abbruchkriteriums festgelegt. 
+
+$
+Delta^k = || p^(k+1) -p^(k) ||_1 = sum_i |p_i^(k+1)-p_i^(k)|
+$
+
+Wenn $Delta^k < epsilon$ (z.B. $10^(-6)$), wird die Iteration abgebrochen und $p = p^(k+1)$ gesetzt.
+
+Jetzt wenden wir dieses Prozedere auf unser Übergangsmatrix $M$ an. Die Initialisierung von $p$:
+$
+p^(0) = (1/5, 1/5, 1/5, 1/5, 1/5)
+$
+
+1. Iteration:
+
+$
+p^(0)M= (0.166667,0.266667,0.266667,0.133333,0.166667)
+$
+
+Dämpfung und Teleportation einbinden:
+
+$
+p^(1) = 0.85(0.166667, 0.266667, 0.266667, 0.133333, 0.166667) + 0.15(0.2, 0.2, 0.2, 0.2, 0.2) 
+$
+
+$
+= (0.85 * 0.166667 + 0.03, ... ) = (0.171667, 0.256667, 0.256667, 0.143333, 0.171667) 
+$
+
+2. Iteration:
+
+$
+p^(1)M ≈ (0.157222, 0.257222, 0.228889, 0.142778, 0.213889)
+$
+
+Dämpfung und Teleportation
+
+$
+p(2)=0.85(0.157222,0.257222,0.228889,0.142778,0.213889)+0.15(0.2,0.2,0.2,0.2,0.2)
+$
+
+$
+≈(0.163639,  0.248639,  0.224556,  0.151361,  0.211806)
+$
+
+Im Beispiel unserer Übergangsmatrix $M$ würden folgende Wichtigkeiten bzw. Ränge der Webseiten nach 20 Iterationen herauskommen:
+
+$
+#table(
+  columns: 2,
+  table.header(
+    [Website],
+    [PageRank],
+  ),
+  
+  [Facebook], [0.1475],
+  [YouTube],  [0.2459],
+  [Amazon],   [0.2623],
+  [THWS],     [0.1311],
+  [Netflix],  [0.2131],
+)
+$
 == Kompression & Bildverarbeitung
 
 == Datenanalyse (Wichtig für KI)
