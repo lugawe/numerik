@@ -298,44 +298,198 @@ Was ist der Ansatz um ein Eigenwertproblem zu berechen?
 === Einfaches Beispiel
 === Einfaches Beispiel
 Gegeben sei die Matrix
-$ A = mat(1, 2, 0;
-      2, 1, 2;
-      0, 2, 1) $
+$ A = mat(1, 2, -1;
+      0,3,0;
+      -1,2,1;) $
 Berechnen Sie die Eigenvektoren.
 
 *Lözung:*
-
 Schritt 1: Eigenwerte berechnen:
-1.Charakteristisches Polynom:
- $ det(A−λ I)= det mat(2−λ,1,0;
-                    1,3−λ ,1;
-                    0,1,2−λ;)  =0 $  
 
- Determinante berechnen:
+1) Bilde A - λ.I
+
+2) Berechne det(A- λ.I)
+
+3) Nulstellen von det(A-λ.I)
+
+
+1)$  A - λ.I = mat(1−λ,2,-1;
+                    0,3−λ ,0;
+                    -1,2,1-λ;) $
+                    
+2) Determinante berechnen:
  
-$  |A|= (2−λ). det mat(3−λ ,1;
-1,2−λ;) -1 dot det mat(1, 0;
-1, 2−λ;) +0 dot mat(1,0;
-1,2−λ;) $ 
+$   det(A- λ.I) = (1−λ).  det mat(3−λ ,0;
+2,1−λ;) - 0 dot det mat(2,-1;
+2, 1−λ;) +(-1) dot mat(2,-1;
+3-λ,0;) $ 
 
-$ =(2−λ) dot [(3-λ) dot (2-λ)- 1 dot 1] - 1 dot [1 dot (2-λ) -0 dot 1] +0 dot [1 dot 1 - 0 dot (3-λ)] $
+$ = (1−λ) dot [(3-λ) dot (1-λ)- 2 dot 0]  + (-1) dot [2 dot 0 - (-1) (3-λ)] $
 
-$ = (2−λ)⋅(λ 2−5λ+5)−(2−λ)=0 $
+$ = (1-λ)dot(3-λ)dot(1-λ) - 0 +(-1)dot(3-λ) $  
 
-$ = (2−λ)⋅[6−5λ+λ 2 −1]−(2−λ)=0 $
+$ = (1-λ)dot(3-λ)dot(1-λ) -(3-λ) $
 
-$ = (2−λ)[(λ−4)(λ−1)]=0 $
+$ = (3-λ)(1-λ)^2-1 $
 
-Die Eigenwerte sind:
+3) Nulstellen von det(A-λ.I)
 
- $  lambda_1=2, lambda_2=4, lambda_3=1 $  
+ $ (3-λ)(1-λ)^2-1 = 0 $
+ $ (3-λ)(1-2λ +λ^2 -1)=0 $
+ $ (3-λ)λ(-2+λ)=0 $
+
+ Die Eigenwerte sind:
+
+ $  lambda_1=0, lambda_2=3, lambda_3=2 $  
 
 Schritt 2: Eigenvektoren berechnen
+
 Für jeden Eigenwert λ lösen wir das Gleichungssystem:
 
 $ (A - λ I) dot v = 0 $
 
-Für λ = 2
+*Für λ = 0*
+
+$ (A-lambda_1I)x = mat((1-0),2,-1;
+                         0,(3-0),0;
+                         -1,2,1-0;) vec(x_1,x_2,x_3) = vec(0,0,0) $
+ 
+                         
+Gauss-Algorithmus:
+Schritt 1: Aufstellen der erweiterten Matrix
+$  mat(1, 2, -1,|0;
+      0,3,0,|0;
+      -1,2,1,|0;) $
+      $ R 3= R 1 + R 3 ==> mat(1,-2,-1,| 0;
+                              0,3,0,| 0;
+                            0,4,0,| 0;) $
+
+    $ R 2 \u{0027} = 4 dot R 2 -3  dot R 3 ==>mat(1,-2,-1,| 0;
+            0,3,0,| 0;
+            0,0,0,| 0;) $
+            
+Lösung des Gleichungssystems:
+
+ $x_1 -2 dot x_2 -1dot x_3=0 ==> x_1 -2x_2 -x_3=0 $
+ 
+ $3x_2=0 ==> x_2=0$
+ 
+ Einsetzen in die erste Zeile:
+ 
+ $x_1-2 dot 0-x_3=0 ==> x_1-x_3=0 ==> x_1=x_3 $
+
+ Da $x_3$ eine freie Variable ist, setzen wir $x_3$= t (mit t ∈ R).
+ 
+Also:
+
+$x_1=t, x_2=0, x_3=t $ für eine beliebiges t ∈ R \u{005C}{0}
+
+    $v_1 = t vec(1,0,1)$
+
+    
+*Für $ λ_2 = 3$*
+$ (A-lambda_1I)x = mat((1-3),2,-1;
+                         0,(3-3),0;
+                         -1,2,(1-3);) vec(x_1,x_2,x_3) = vec(0,0,0) $
+
+Dies ergibt die reduzierte Matrix:
+ $                   mat(-2,2,-1;
+                         0,0,0;
+                         -1,2,-2;) vec(x_1,x_2,x_3) = vec(0,0,0) $
+Lineares Gleichungssystem: 
+$ cases(-2x_1+2x_2-x_3 = 0,
+         0=0,
+        -x_1+2x_2-2x_3 = 0,
+         ) $
+Erweiterte Matrix:
+$ mat(-2,2,-1,|0;
+     0,0,0,|0;
+     -1,2,-2,|0;)  $     
+
+Gaußsche Eliminierung:
+Schritt 1: Zeilenumformung:
+$ R 3 = R 3- 1/2R 1$
+
+$(-1) -1/2  (-2) = -1 +1=0$
+
+$ 2- 1/2 dot 2 = 2-1 =1$    
+$-2-1/2(-1)=-2+1/2 = -3/2$
+
+Die erweiterte Matrix wird somit:
+$ mat(-2,2,-1,|0;
+     0,0,0,|0;
+     0,1,-3/2,|0;)  $  
+
+Schritt 2: Normierung der ersten Zeile:
+
+R1 \u{0027} = -1/2.R1
+$ mat(1,-1,1/2,|0;
+     0,0,0,|0;
+     0,1,-3/2,|0;)  $ 
+
+Lösung des Gleichungssystems:
+
+1.Gleichung:
+
+$x_1-x_2+1/2x_3=0 ==> x_1=x_2-1/2x_3$
+
+2.Gleichung:
+
+$x_2-3/2x_3=0 ==> x_2=3/2x_3$
+
+Da $x_3$ eine freie Variable ist, setzen wir $x_3$= z (mit z ∈ R).
+
+$x_2=3/2z$
+
+$x_1=3/2z -1/2z=z$
+
+Der Eigenvektor ist somit:
+
+$v_2=z vec(1,3/2,1)$
+
+
+*Für $lambda_3 = 2 $*
+
+$ (A-lambda_1I)x = mat((1-2),2,-1;
+                         0,(3-2),0;
+                         -1,2,(1-2);) vec(x_1,x_2,x_3) = vec(0,0,0) $
+
+Dies ergibt die reduzierte Matrix:
+ $                   mat(-1,2,-1;
+                         0,1,0;
+                         -1,2,-1;) vec(x_1,x_2,x_3) = vec(0,0,0) $
+Lineares Gleichungssystem: 
+$ cases(-1x_1+2x_2-x_3 = 0,
+         1x_2=0,
+        -x_1+2x_2-1x_3 = 0,
+         ) $
+
+Lösung des Gleichungssystems:
+
+Zweite Gleichung:
+
+$x_2=0$
+
+Einsetzen von $x_2=0$ in die beiden anderen Gleichungen:
+
+Erste Gleichung:
+
+$-1x_1+2.0-1x_3=0 ==> -x_2-x_3=0$
+
+$x_1=-x_3$
+
+Dritte Gleichung:
+
+$-1x_1+2 dot 0 -1x_3=0 ==> -1x_1-x_3=0 $  
+
+Dies ist die gleiche Gleichung wie die erste, also gibt es keine zusätzlichen Informationen.
+Da $x_3$ eine freie Variable ist, setzen wir 
+   $x_1$= -k, $x_2=0$, $x_3=k$ 
+
+Der Eigenvektor ist somit:
+
+$ v_3=k vec(-1,0,1) $
+
 -> Determinantenverfahren 2x2 Matrix um die Eingenwerte zu berechenn
 
 1 bis 2 Eigenwerte einsetzen und damit dann $lambda_1$ bzw. $lambda_2$ in die Matrix einsetzen und damit den Eigenvektor berechnen über den Gauß-Algorythmus.
