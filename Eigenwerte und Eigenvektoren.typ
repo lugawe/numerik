@@ -75,14 +75,22 @@ Begleitend dazu zeigen wir Python Code Beispiele.
 
 == Geometrische Anschauung (Luis)
 
-Geometrisch betrachtet bedeutet dies, dass die Vektoren in dieselbe Richtung
-zeigen, sich jedoch in ihrer Länge unterscheiden.
+Geometrisch betrachtet werden Eigenvektoren durch die Transformation lediglich in ihrer Länge
+verändert.
+Ihre Richtung bleibt bei positivem Eigenwert erhalten, kehrt sich bei negativem Eigenwert jedoch um. Man kann sagen der
+
+$
+"Vektor wird" cases(
+  "gestreckt " & "für " lambda > 1 \
+  "gekürzt " & "für " 0 < lambda < 1 \
+  "umgedreht" & "für " lambda < 0 \
+  "nicht verändert " & "für " lambda = 1 \ 
+  "zu 0" & "für " lambda = 0
+)
+$
+
 Diese Längenunterschiede ergeben sich durch eine Skalierung, die sich durch die
 Gleichung $arrow(v)_text("skaliert") = lambda arrow(v)$ beschreiben lässt.
-
-Für positive $lambda$-Werte wird der Vektor gestreckt (länger) und
-für negative $lambda$-Werte wird er gestaucht (kürzer). Für den Fall $lambda = 0$ ist
-das Ergebnis der Nullvektor.
 
 In @plot_eigen1 wird beispielsweise die Gleichung
 $mat(2, 1; 1, 2) dot vec(1, 1) = 3 dot vec(1, 1)$
