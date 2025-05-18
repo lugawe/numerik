@@ -128,9 +128,9 @@ Um die Eigenwerte einer Matrix $A in RR^(n crossmark n)$ zu bestimmen, verwenden
 Gleichung $A arrow(v) = lambda arrow(v)$ und formen diese mit Hilfe der Einheitsmatrix $E_n$ wie folgt um:
 
 $
-& A arrow(v) && = lambda arrow(v) && | "Einheitsmatrix" E_n "einfügen" \
+& A arrow(v) && = lambda arrow(v) && | "Einheitsmatrix" E_n "einfügen" "(" E_n arrow(v) = arrow(v) ")" \
 <==> & A arrow(v) && = lambda E_n arrow(v) && | - lambda E_n arrow(v) \
-<==> & A arrow(v) − lambda E_n arrow(v) && = 0 && | "Umformen" \
+<==> & A arrow(v) − lambda E_n arrow(v) && = 0 && | arrow(v) "ausklammern" \
 <==> & (A − lambda E_n) arrow(v) && = 0
 $
 
