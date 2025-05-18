@@ -121,20 +121,18 @@ im $RR^2$ dargestellt, grundsätzlich ist das Konzept jedoch auch auf $RR^n$ üb
 #pagebreak()
 
 == Lösungsverfahren
+
 === Berechnung der Eigenwerte
 
-Um die Eigenwerte einer Matrix $A∈R^(n×n)$ zu bestimmen, verwenden wir die Gleichung
+Um die Eigenwerte einer Matrix $A in RR^(n crossmark n)$ zu bestimmen, verwenden wir die bereits bekannte
+Gleichung $A arrow(v) = lambda arrow(v)$ und formen diese mit Hilfe der Einheitsmatrix $E_n$ wie folgt um:
 
-$ A v = λ v $(1.1)
-
-mit einem Eigenvektor $𝑣≠0$ und dem Eigenwert λ∈R.
-
- formen wir
-(1.1) um, indem wir die n × n - Einheitsmatrix $E_n$ verwenden:
-
-$ A v = λ v <==> A v = λ E_n v $  
-$ <==> A v − λ E_n v = 0 $
-$ <==> (A − λ E_n)v = 0. $ 
+$
+& A arrow(v) && = lambda arrow(v) && | "Einheitsmatrix" E_n "einfügen" \
+<==> & A arrow(v) && = lambda E_n arrow(v) && | - lambda E_n arrow(v) \
+<==> & A arrow(v) − lambda E_n arrow(v) && = 0 && | "Umformen" \
+<==> & (A − lambda E_n) arrow(v) && = 0
+$
 
 Mit bekannten Resultaten uber die Lösbarkeit von quadratischen
 linearen Gleichungssysteme erhalten wir:
