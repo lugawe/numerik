@@ -482,13 +482,6 @@ $ v_1 = t vec(1,0,1) , v_2=z vec(1,3/2,1) ,v_3=k vec(-1,0,1) $
 Dabei sind t,z und k beliebige Skalierungsfaktoren (t,z,k∈R).
 
 
--> Determinantenverfahren 2x2 Matrix um die Eingenwerte zu berechenn
-
-1 bis 2 Eigenwerte einsetzen und damit dann $lambda_1$ bzw. $lambda_2$ in die Matrix einsetzen und damit den Eigenvektor berechnen über den Gauß-Algorythmus.
-
--> Determinantenverfahren 2x2 Matrix um die Eingenwerte zu berechenn
-
-1 bis 2 Eigenwerte einsetzen und damit dann $lambda_1$ bzw. $lambda_2$ in die Matrix einsetzen und damit den Eigenvektor berechnen über den Gauß-Algorythmus.
 
 === Komplexeres Beispiel
 -> Determinantenverfahren 5x5 Matrix
