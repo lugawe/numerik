@@ -266,7 +266,6 @@ Da die zweite Gleichung ein Vielfaches der ersten ist, betrachten wir nur die er
 $ x_1 = -2x_2 $
 $ v_2 = k_2 vec(-2,1) $ wobei $k_2 eq.not 0 $
 
-Was ist der Ansatz um ein Eigenwertproblem zu berechen?
 
 === Komplexeres Beispiel
 
