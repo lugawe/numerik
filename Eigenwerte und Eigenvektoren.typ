@@ -120,87 +120,78 @@ im $RR^2$ dargestellt, grundsätzlich ist das Konzept jedoch auch auf $RR^n$ üb
 #pagebreak()
 
 == Formel (Gülsüm)
+Gegeben sei eine reelle quadratische n×n-Matrix $ A∈R^(n×n)$.
 
-Eine quadratische Matrix *$A$* kann mit einem Spaltenvektor *$x$* multipliziert werden, wobei
-das Ergebnis wieder ein Spaltenvektor ist.
+Gesucht sind
 
-Es gibt eine besondere Form dieser Transformation:
+- ein vom Nullvektor verschiedener Vektor $x∈R^n$ $𝑥≠0$, und
 
-$ A x = lambda x $
+- ein Skalar λ∈R (wobei auch λ=0 erlaubt ist),
+welche die Gleichung
 
-Dabei gilt:
-- *$A$* ist eine $n times n$ Matrix.
-- *$x$* ist ein $n times 1$ Spaltenvektor (wobei $x eq.not 0$).
-- *$lambda$* ist ein Skalar.
+*$ A x = lambda x $*
+erfühlen.
 
-Jeder Wert von *$lambda$*, der diese Gleichung erfüllt, wird als *Eigenwert* der Matrix *$A$* bezeichnet.
-Der zugehörige Vektor *$x$* wird als *Eigenvektor* zum Eigenwert *$lambda$* bezeichnet.
+Ein solches λ heißt *Eigenwert*  von A, ein passendes x heißt *Eigenvektor* von
+A zum Eigenwert λ.
+
+//#highlight(extent: 4pt )
+
+ 
 
 *Bemerkung*
 
-*1.* Dass der Null vektor, nennen wir ihn 0, als Eigenvektor nicht zulässig ist, liegt daran, dass die Gleichung
+*1.* Der Nullvektor (0) ist kein zulässiger Eigenvektor, da die Gleichung
 
  $ A 0 = lambda 0 $  
                                                 
 für jede Matrix A und jede Zahl λ erfüllt ist und somit keinerlei Erkenntnisgewinn bringt   
 
-*2.* Ein Eigenvektor ist niemals eindeutig bestimmt. Hat man nämlich zu gegebener
- Matrix A einen Vektor v und eine Zahl λ gefunden, sodass Av = λv gilt, so kann
- man diesen Vektor mit einer beliebigen Zahl $a eq.not 0$ multiplizieren. Die Gleichung Aαv =λαv ist wegen Aαv = αAv und λαv = αλv ebenfalls richtig, also ist 
- auch αv ein Eigenvektor von A.
-
-
-*3.* Wie in Beispiel 2.1 schon geschrieben wurde besagt Gl.(2.2), dass der Vektor v
- durch die Multiplikation mit der Matrix A nicht in seiner Lage verändert, sondern
- lediglich um den Faktor λ gestreckt bzw. gestaucht sowie– falls λ negativ ist– in
- seiner Richtung umgekehrt wird.
+*2.* Ein Eigenvektor ist nicht eindeutig bestimmt. Wenn v ein Eigenvektor zu einem Eigenwert λ von A ist, so ist auch jeder skalare Vielfache $α v$ mit $𝛼≠0$ ein Eigenvektor, da
+$ A(α v)=α(A v)=α(λ v)=λ(α v) $  
 
 
 == Lösungsverfahren (Gülsüm)
-== Berechnung der Eigenwerte
+=== Berechnung der Eigenwerte
 
-1. Schritt: Eigenwertgleichung
-Zu Beginn haben wir die Eigenwertgleichung:
+Um die Eigenwerte einer Matrix $A∈R^(n×n)$ zu bestimmen, verwenden wir die Gleichung
 
-$ A v = λ v $  
-Dabei ist:
+$ A v = λ v $(1.1)
 
-*A* eine Matrix,
+mit einem Eigenvektor $𝑣≠0$ und dem Eigenwert λ∈R.
 
-*v* ein Eigenvektor,
+Um ein Berechnungsverfahren fur Eigenwerte zu finden, formen wir
+(1.1) um, indem wir die n × n - Einheitsmatrix $E_n$ verwenden:
 
-*λ* der Eigenwert.
+$ A v = λ v <==> A v = λ E_n v $  
+$ <==> A v − λ E_n v = 0 $
+$ <==> (A − λ E_n)v = 0. $ 
 
+Mit bekannten Resultaten uber die Lösbarkeit von quadratischen
+linearen Gleichungssysteme erhalten wir:
 
-Um die Gleichung zu vereinfachen, fügen wir die *Einheitsmatrix I* auf der rechten Seite hinzu. Die Einheitsmatrix verändert einen Vektor nicht, da *Iv=v* gilt. Daher wird die Gleichung zu:
+$ λ "ist Eigenwert von" A <==> "Ker"(A − λ E n) "ist nicht-trivial" $  
 
- $ A v = λ I v $
+Das bedeutet: Ein Skalar λ ist Eigenwert von A, wenn der Kern (Nullraum) der Matrix $A−λ E_n$ nicht-trivial ist, also mehr als nur den Nullvektor enthält.
 
+$ <==> A − λ E n "ist nicht invertierbar" $ 
 
-Nun bringen wir alle Terme auf die linke Seite der Gleichung und erhalten:
-                          
-$ A v − λ I v = 0 $ 
-Dies lässt sich als:
-$ ( A − λ I ) v=0 $
-umformen. Das Produkt der Matrix (A − λI) mit dem Vektor v muss also den Nullvektor ergeben.
+Eine Matrix ist invertierbar genau dann, wenn ihr Kern nur den Nullvektor enthält. Da hier der Kern nicht-trivial ist, ist $A−λ E_n$
 
+$ <==> det(A − λ E n) = 0 $  
+Eine Matrix ist genau dann invertierbar, wenn ihre Determinante ungleich Null ist. Ist die Determinante Null, so ist die Matrix singulär und damit nicht invertierbar.
 
-Da v als Eigenvektor nicht der Nullvektor sein darf,  muss die Matrix A−λI einen Rangverlust haben, also die Determinante null sein. 
+\
+Daher gilt für die Eigenwerte λ von A die sogenannte charakteristische Gleichung:
+$ det(A − λ E n) = 0 $ 
 
-// 
-/*Satz 2.1
-Es sei A eine (n ×n)-Matrix und I die gleichgroße Einheitsmatrix. Eine Zahl
-λ ist genau dann Eigenwert von A, wenn
-                        
-                             det(A − λI) = 0
-ist.
-}*/
+Diese Gleichung stellt ein Polynom n-ten Grades in λ dar, das *charakteristische Polynom* von A genannt wird.
 
-Daher gilt:
-$ det ( A − λ I ) = 0 $
-Diese Gleichung stellt ein Polynom in Bezug auf $lambda$ dar, das als *charakteristisches Polynom* bezeichnet wird. Um die Eigenwerte der Matrix A zu bestimmen, lösen wir dieses Polynom nach $lambda$ auf.
+Um die Eigenwerte zu bestimmen, löst man dieses Polynom nach 
+λ auf.
 
-Da das charakteristische Polynom ein Polynom n-ten Grades ist, hat es höchstens n Nullstellen. Das bedeutet, dass die Matrix A höchstens n Eigenwerte besitzt.
+Da das charakteristische Polynom vom Grad n ist, hat es höchstens 
+n Nullstellen. Das bedeutet, dass die Matrix A höchstens n Eigenwerte besitzt.
 
 *Beispiel 1*
 
