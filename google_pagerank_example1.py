@@ -1,38 +1,35 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-N = 4
-d = 0.85
-
-L = np.array([2, 1, 1, 2])
-
-links = np.array([
-    [0, 0, 1, 1],
-    [1, 0, 0, 1],
-    [1, 1, 0, 1],
-    [0, 0, 0, 0],
+M = np.array([
+  [0,     1/3, 1/3, 1/3, 0    ],  # Facebook
+  [1/3,   0,   0,   1/3, 1/3  ],  # YouTube
+  [0,     1/2, 0,   0,   1/2  ],  # Amazon
+  [1/2,   1/2, 0,   0,   0    ],  # THWS
+  [0,     0,   1,   0,   0    ],  # Netflix
 ])
 
-M = links / L
+def compute_pagerank(M, iterations=100):
+  n = M.shape[0]
+  p = np.ones(n)
+  history = np.zeros((iterations + 1, n))
+  history[0] = p
+  for k in range(1, iterations + 1):
+    p = p.dot(M)
+    history[k] = p
+  return history
 
-r = np.ones(N) / N
-iterations = 30
-history = np.zeros((iterations + 1, N))
-history[0] = r
+iterations = 20
+history = compute_pagerank(M, iterations)
 
-for k in range(iterations):
-    r = d * (M @ r) + (1 - d) / N
-    history[k + 1] = r
-
-print(f"PageRank nach {iterations} Iterationen:")
-for name, val in zip(["A", "B", "C", "D"], r):
-    print(f"{name}: {val:.4f}")
-
+labels = ['Facebook', 'YouTube', 'Amazon', 'THWS', 'Netflix']
 plt.figure()
-for i, name in enumerate(["A", "B", "C", "D"]):
-    plt.plot(history[:, i], label=name)
-plt.xlabel("Iteration")
-plt.ylabel("PageRank-Wert")
+for i, label in enumerate(labels):
+  plt.plot(history[:, i], label=label)
+
+plt.xlabel('Iteration')
+plt.ylabel('PageRank')
+plt.title('PageRank Konvergenz')
 plt.legend()
-plt.title("Konvergenz der PageRank-Werte")
+plt.grid(True)
 plt.show()
