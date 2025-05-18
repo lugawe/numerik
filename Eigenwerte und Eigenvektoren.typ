@@ -19,7 +19,7 @@
   ]
   \ \
   Michael Winsauer - #link("mailto:michael.winsauer@study.thws.de", [michael.winsauer\@study.thws.de])  \
-  Gülsüm ? - #link("mailto:?.?@study.thws.de", [?.?\@study.thws.de]) \
+  Gülsüm Erboga - #link("mailto:guelsuem.erboga@study.thws.de", [guelsuem.erboga\@study.thws.de]) \
   Luis Weich - #link("mailto:luis.weich@study.thws.de", [luis.weich\@study.thws.de])
 ])
 
@@ -53,7 +53,7 @@ z.B. Inhalt, Ladezeit, Werbung, KI und weiteres.]
 Diese scheinbar abstrakten mathematischen Konzepte helfen uns dabei,
 komplexe Systeme zu verstehen, Muster zu erkennen und Prozesse effizient zu gestalten.
 
-Wenn wir eine quadratische Matrix $M in RR^(n crossmark n)$ und
+Wenn wir eine quadratische Matrix $A in RR^(n crossmark n)$ und
 einen Spaltenvektor $arrow(v) in RR^n$ multiplizieren bekommen wir als Ergebnis wieder einen
 Spaltenvektor. Dieser Spaltenvektor zeigt jedoch meistens in ganz verschiedene Richtungen
 und hat mit dem ursprünglichen Vektor $arrow(v)$ nichts mehr gemeinsam.
