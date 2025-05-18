@@ -13,6 +13,18 @@
 #let colorred(x) = text(fill: red, $#x$)
 #let colorblue(x) = text(fill: blue, $#x$)
 
+#align(center, [
+  #text(size: 28pt)[
+    Eigenwerte und Eigenvektoren \ Basics und Anwendungen
+  ]
+  \ \
+  Michael Winsauer - #link("mailto:michael.winsauer@study.thws.de", [michael.winsauer\@study.thws.de])  \
+  Gülsüm ? - #link("mailto:?.?@study.thws.de", [?.?\@study.thws.de]) \
+  Luis Weich - #link("mailto:luis.weich@study.thws.de", [luis.weich\@study.thws.de])
+])
+
+\ \
+
 #outline(indent: auto)
 
 #pagebreak()
@@ -84,7 +96,7 @@ $
   "gestreckt " & "für " lambda > 1 \
   "gestaucht " & "für " 0 < lambda < 1 \
   "nicht verändert " & "für " lambda = 1 \ 
-  "zu 0" & "für " lambda = 0
+  "zu" 0 & "für " lambda = 0
 )
 $
 
