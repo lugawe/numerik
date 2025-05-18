@@ -38,7 +38,7 @@
 
 = *Eigenwerte und Eigenvektoren*
 
-== Einführung (Luis)
+== Einführung
 
 Eigenwerte und Eigenvektoren spielen nicht nur in der linearen Algebra,
 sondern auch in zahlreichen Bereichen unseres Lebens eine zentrale Rolle.
@@ -61,7 +61,7 @@ Manchmal jedoch bekommen wir einen Vektor als Ergebnis, der sich als vielfaches
 von dem ursprünglichen Vektor $arrow(v)$ darstellen lässt.
 
 Allgemein lässt sich sagen, dass jeder Vektor $arrow(v)$, den man mit einer
-Matrix $M$ multipliziert und dessen
+Matrix $A$ multipliziert und dessen
 Ergebnis ein vielfaches von dem ursprünglichen Vektor $arrow(v)$ ist,
 nennt man *Eigenvektor*. Die dazugehörige Zahl $lambda$ mit der der Vektor $arrow(v)$ im 
 Ergebnis multipliziert bzw. skaliert wird nennt man *Eigenwert*.
@@ -70,13 +70,14 @@ Wenn wir eine Gleichung in der folgenden Form vor uns haben, können wir über
 das _"Eigenwertproblem"_ sprechen:
 
 #text(size: 20pt)[
-  $ M arrow(v) = lambda arrow(v) $
+  $ A arrow(v) = lambda arrow(v) $
 ]
 
 Hierbei gilt
-$M in RR^(n crossmark n)$,
+$A in RR^(n crossmark n)$,
 $arrow(v) in RR^n$ mit $arrow(v) eq.not 0$ und
 $lambda in RR$.
+Der Nullvektor ist kein zulässiger Eigenvektor, da die Gleichung $A 0 = lambda 0$ für jede Matrix A und jede Zahl λ erfüllt ist und somit keinerlei Erkenntnisgewinn bringt  
 
 Im Folgenden werden wir das Eigenwertproblem erklären, Beispiele zeigen und
 anschaulich machen.
@@ -85,7 +86,7 @@ Begleitend dazu zeigen wir Python Code Beispiele.
 
 #pagebreak()
 
-== Geometrische Anschauung (Luis)
+== Geometrische Anschauung
 
 Geometrisch betrachtet werden Eigenvektoren durch die Transformation lediglich in ihrer Länge
 verändert.
@@ -119,39 +120,7 @@ im $RR^2$ dargestellt, grundsätzlich ist das Konzept jedoch auch auf $RR^n$ üb
 
 #pagebreak()
 
-== Formel (Gülsüm)
-
-Gegeben sei eine reelle quadratische n×n-Matrix $ A∈R^(n×n)$.
-
-Gesucht sind
-
-- ein vom Nullvektor verschiedener Vektor $x∈R^n$ $𝑥≠0$, und
-
-- ein Skalar λ∈R (wobei auch λ=0 erlaubt ist),
-welche die Gleichung
-
-*$ A x = lambda x $*
-erfühlen.
-
-Ein solches λ heißt *Eigenwert*  von A, ein passendes x heißt *Eigenvektor* von
-A zum Eigenwert λ.
-
-//#highlight(extent: 4pt )
-
- 
-
-*Bemerkung*
-
-*1.* Der Nullvektor (0) ist kein zulässiger Eigenvektor, da die Gleichung
-
- $ A 0 = lambda 0 $  
-                                                
-für jede Matrix A und jede Zahl λ erfüllt ist und somit keinerlei Erkenntnisgewinn bringt   
-
-*2.* Ein Eigenvektor ist nicht eindeutig bestimmt. Wenn v ein Eigenvektor zu einem Eigenwert λ von A ist, so ist auch jeder skalare Vielfache $α v$ mit $𝛼≠0$ ein Eigenvektor, da
-$ A(α v)=α(A v)=α(λ v)=λ(α v) $  
-
-== Lösungsverfahren (Gülsüm)
+== Lösungsverfahren
 === Berechnung der Eigenwerte
 
 Um die Eigenwerte einer Matrix $A∈R^(n×n)$ zu bestimmen, verwenden wir die Gleichung
@@ -313,7 +282,7 @@ Berechnen Sie die Eigenvektoren.
 
 _Schritt 1: Eigenwerte berechnen:_
 
-1.1) Bilde A - λ.I
+1.1) Bilde $A - λ dot I$
 
 1.2) Berechne det(A- λ.I)
 
@@ -527,11 +496,11 @@ Dabei sind t,z und k beliebige Skalierungsfaktoren (t,z,k∈R).
 -> Determinantenverfahren 5x5 Matrix
 -> Polynom vom 5. Grad -> Was nun?
 
-== Python-Beispiele (Luis)
+== Python-Beispiele
 
 = *Anwendungen*
 
-== Google PageRank (Michael)
+== Google PageRank
 Google PageRank ist ein Algorithmus, der von Google entwickelt wurde um Webseiten bei einer Suchanfrage zu bewerten und dementsprechend zu sortieren. Webseiten sind untereinander über Hyperlinks verbunden. Die Idee des Algorithmus ist nun, dass Webseiten, welche von mehreren anderen Webseiten referenziert werden als wichtiger eingestuft werden. Diese Wichtigkeit wird durch einen mathematischen Ansatz von Eigenwerten und Eigenvektoren definiert.
 
 Man kann sich das Verfahren gut als einen gerichteten Graphen vorstellen, bei dem Webseiten durch Knoten dargestellt werden und Kanten die Hyperlinks darstellen. Die Rang einer Webseite wird dann iterativ berechnet, wobei beachtet wird, wie viele eingehende Links diese Webseite hat und welcher Rang die Webseiten haben die diese Webseite referenzieren.
