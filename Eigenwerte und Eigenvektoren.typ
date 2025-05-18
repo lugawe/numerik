@@ -391,7 +391,6 @@ $ mat(-2,2,-1,|0;
 Gaußsche Eliminierung:
 
 
-
 $ R 3 = R 3- 1/2R 1$
 
 $(-1) -1/2  (-2) = -1 +1=0$
@@ -481,10 +480,6 @@ $ v_1 = t vec(1,0,1) , v_2=z vec(1,3/2,1) ,v_3=k vec(-1,0,1) $
 Dabei sind t,z und k beliebige Skalierungsfaktoren (t,z,k∈R).
 
 
-
-=== Komplexeres Beispiel
--> Determinantenverfahren 5x5 Matrix
--> Polynom vom 5. Grad -> Was nun?
 
 == Python-Beispiele
 
