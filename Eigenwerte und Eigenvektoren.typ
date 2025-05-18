@@ -36,7 +36,7 @@
 
 #pagebreak()
 
-= Eigenwerte und Eigenvektoren
+= *Eigenwerte und Eigenvektoren*
 
 == Einführung (Luis)
 
@@ -120,6 +120,7 @@ im $RR^2$ dargestellt, grundsätzlich ist das Konzept jedoch auch auf $RR^n$ üb
 #pagebreak()
 
 == Formel (Gülsüm)
+
 Gegeben sei eine reelle quadratische n×n-Matrix $ A∈R^(n×n)$.
 
 Gesucht sind
@@ -150,7 +151,6 @@ für jede Matrix A und jede Zahl λ erfüllt ist und somit keinerlei Erkenntnisg
 *2.* Ein Eigenvektor ist nicht eindeutig bestimmt. Wenn v ein Eigenvektor zu einem Eigenwert λ von A ist, so ist auch jeder skalare Vielfache $α v$ mit $𝛼≠0$ ein Eigenvektor, da
 $ A(α v)=α(A v)=α(λ v)=λ(α v) $  
 
-
 == Lösungsverfahren (Gülsüm)
 === Berechnung der Eigenwerte
 
@@ -160,7 +160,7 @@ $ A v = λ v $(1.1)
 
 mit einem Eigenvektor $𝑣≠0$ und dem Eigenwert λ∈R.
 
-Um ein Berechnungsverfahren fur Eigenwerte zu finden, formen wir
+ formen wir
 (1.1) um, indem wir die n × n - Einheitsmatrix $E_n$ verwenden:
 
 $ A v = λ v <==> A v = λ E_n v $  
@@ -186,6 +186,7 @@ Daher gilt für die Eigenwerte λ von A die sogenannte charakteristische Gleichu
 $ det(A − λ E n) = 0 $ 
 
 Diese Gleichung stellt ein Polynom n-ten Grades in λ dar, das *charakteristische Polynom* von A genannt wird.
+$ #table(  [$P_A$(λ) = $det(A − λ E_n)$ ] )  $ 
 
 Um die Eigenwerte zu bestimmen, löst man dieses Polynom nach 
 λ auf.
@@ -234,19 +235,21 @@ $ lambda = (5 ± 5.744) /
  Die Eigenwerte der Matrix A sind:
  $ λ 1 = 5.561, λ 2 = −0.561 $
 
-== Bestimmung der Eigenvektoren
+=== Bestimmung der Eigenvektoren
 Um einen Eigenvektor zu berechnen, braucht man zuerst den zugehörigen Eigenwert.
 
-- Schreibe das lineare Gleichungssystem (A−λI)v=0 explizit auf, wobei die Unbekannten die Komponenten des Vektors v sind.
 
+- Fur jeden Eigenwert  λ mussen nun alle Lösungen $v≠0$ des homogenen LGS
+$ #table([(A − λ$E_n$)v = 0]) $
+gefunden werden. Diese sind die Eigenvektoren von A zum Eigenwert λ
 
 - Wir lösen das System mit einem Verfahren wie dem Gauß-Algorithmus.
 
 - Wenn die Matrix A−λI nicht invertierbar (singulär) ist, hat das System keine eindeutige Lösung.
 
   In diesem Fall wählen wir eine der Unbekannten beliebig und berechnen die anderen daraus
-
-  *Beispiel 2*
+\
+=== Einfaches Beispiel
    Ermitteln Sie die Eigenwerte für die Matrix $ mat(0, 2; 2, 3;)$  
    Die charakteristische Gleichung gibt uns
    $ mat(0-λ, 2;
@@ -262,7 +265,7 @@ $ λ_1=4, λ_2=−1$
 
 *a)*  $lambda_1$  = 4:
 
-Um den ersten Eigenvektor zu bestimmen, setzen wir $lambda_1$  = 4 in die Gleichung A−λI=0 ein:
+Um den ersten Eigenvektor zu bestimmen, setzen wir $lambda_1$  = 4 in die Gleichung (A−λI)v=0 ein:
 
 $ mat(0-4, 2;
         2, 3-4) dot vec(x_1,x_2) = vec(0,0)  $
@@ -275,7 +278,7 @@ $ -4 x_1 + 2 x_2 = 0 $
 $ 2 x_1 -x_2 = 0 $
 Beide Gleichungen zeigen, dass $x_2$ = $2x_1$ ist. Daher kann der erste Eigenvektor wie folgt dargestellt werden:
 
-$ x_1 = k_1 vec(1,2) $
+$ v_1 = k_1 vec(1,2) $
 
 Hierbei ist $k_1$ ein Skalar (mit $k_1 eq.not 0$), solange das Verhältnis zwischen $x_2$ und $x_1$ gleich 2 ist, handelt es sich um einen Eigenvektor.
 
@@ -294,12 +297,12 @@ Dies ergibt das Gleichungssystem:
 
 Da die zweite Gleichung ein Vielfaches der ersten ist, betrachten wir nur die erste:  
 $ x_1 = -2x_2 $
-$ x_2 = k_2 vec(-2,1) $ wobei $k_2 eq.not 0 $
+$ v_2 = k_2 vec(-2,1) $ wobei $k_2 eq.not 0 $
 
 Was ist der Ansatz um ein Eigenwertproblem zu berechen?
 
-=== Einfaches Beispiel
-=== Einfaches Beispiel
+=== Komplexeres Beispiel
+
 Gegeben sei die Matrix
 $ A = mat(1, 2, -1;
       0,3,0;
@@ -307,20 +310,21 @@ $ A = mat(1, 2, -1;
 Berechnen Sie die Eigenvektoren.
 
 *Lözung:*
-Schritt 1: Eigenwerte berechnen:
 
-1) Bilde A - λ.I
+_Schritt 1: Eigenwerte berechnen:_
 
-2) Berechne det(A- λ.I)
+1.1) Bilde A - λ.I
 
-3) Nulstellen von det(A-λ.I)
+1.2) Berechne det(A- λ.I)
+
+1.3) Nulstellen von det(A-λ.I)
 
 
-1)$  A - λ.I = mat(1−λ,2,-1;
+$  A - λ.I = mat(1−λ,2,-1;
                     0,3−λ ,0;
                     -1,2,1-λ;) $
                     
-2) Determinante berechnen:
+ Determinante berechnen:
  
 $   det(A- λ.I) = (1−λ).  det mat(3−λ ,0;
 2,1−λ;) - 0 dot det mat(2,-1;
@@ -335,7 +339,7 @@ $ = (1-λ)dot(3-λ)dot(1-λ) -(3-λ) $
 
 $ = (3-λ)(1-λ)^2-1 $
 
-3) Nulstellen von det(A-λ.I)
+ Nulstellen von det(A-λ.I)
 
  $ (3-λ)(1-λ)^2-1 = 0 $
  $ (3-λ)(1-2λ +λ^2 -1)=0 $
@@ -345,7 +349,7 @@ $ = (3-λ)(1-λ)^2-1 $
 
  $  lambda_1=0, lambda_2=3, lambda_3=2 $  
 
-Schritt 2: Eigenvektoren berechnen
+_Schritt 2: Eigenvektoren berechnen_
 
 Für jeden Eigenwert λ lösen wir das Gleichungssystem:
 
@@ -357,29 +361,38 @@ $ (A-lambda_1I)x = mat((1-0),2,-1;
                          0,(3-0),0;
                          -1,2,1-0;) vec(x_1,x_2,x_3) = vec(0,0,0) $
  
-                         
-Gauss-Algorithmus:
-Schritt 1: Aufstellen der erweiterten Matrix
+
+Lösung linearer Gleichungssysteme mit dem Gauß-Algorithmus
+
+$ cases(x_1+2_x_2-x_3=0,
+3x_2=0,
+-x_2+2x_2+x_3=0) $  
+
+
+Erweiterte Matrix:
 $  mat(1, 2, -1,|0;
       0,3,0,|0;
       -1,2,1,|0;) $
-      $ R 3= R 1 + R 3 ==> mat(1,-2,-1,| 0;
+      
+
+Gaußsche Eliminierung:
+      $ R 3= R 1 + R 3 ==> mat(1,2,-1,| 0;
                               0,3,0,| 0;
                             0,4,0,| 0;) $
 
-    $ R 2 \u{0027} = 4 dot R 2 -3  dot R 3 ==>mat(1,-2,-1,| 0;
+    $ R 3 \u{0027} = 4 dot R 2 -3  dot R 3 ==>mat(1,2,-1,| 0;
             0,3,0,| 0;
             0,0,0,| 0;) $
             
 Lösung des Gleichungssystems:
 
- $x_1 -2 dot x_2 -1dot x_3=0 ==> x_1 -2x_2 -x_3=0 $
+ $x_1 +2 dot x_2 -1dot x_3=0 ==> x_1 +2x_2 -x_3=0 $
  
  $3x_2=0 ==> x_2=0$
  
  Einsetzen in die erste Zeile:
  
- $x_1-2 dot 0-x_3=0 ==> x_1-x_3=0 ==> x_1=x_3 $
+ $x_1+2 dot 0-x_3=0 ==> x_1-x_3=0 ==> x_1=x_3 $
 
  Da $x_3$ eine freie Variable ist, setzen wir $x_3$= t (mit t ∈ R).
  
@@ -387,7 +400,7 @@ Also:
 
 $x_1=t, x_2=0, x_3=t $ für eine beliebiges t ∈ R \u{005C}{0}
 
-    $v_1 = t vec(1,0,1)$
+    $ v_1 = t vec(1,0,1) $
 
     
 *Für $ λ_2 = 3$*
@@ -410,7 +423,9 @@ $ mat(-2,2,-1,|0;
      -1,2,-2,|0;)  $     
 
 Gaußsche Eliminierung:
-Schritt 1: Zeilenumformung:
+
+
+
 $ R 3 = R 3- 1/2R 1$
 
 $(-1) -1/2  (-2) = -1 +1=0$
@@ -418,15 +433,15 @@ $(-1) -1/2  (-2) = -1 +1=0$
 $ 2- 1/2 dot 2 = 2-1 =1$    
 $-2-1/2(-1)=-2+1/2 = -3/2$
 
-Die erweiterte Matrix wird somit:
-$ mat(-2,2,-1,|0;
+
+$ ==> mat(-2,2,-1,|0;
      0,0,0,|0;
      0,1,-3/2,|0;)  $  
 
-Schritt 2: Normierung der ersten Zeile:
+
 
 R1 \u{0027} = -1/2.R1
-$ mat(1,-1,1/2,|0;
+$ ==> mat(1,-1,1/2,|0;
      0,0,0,|0;
      0,1,-3/2,|0;)  $ 
 
@@ -448,7 +463,7 @@ $x_1=3/2z -1/2z=z$
 
 Der Eigenvektor ist somit:
 
-$v_2=z vec(1,3/2,1)$
+$ v_2=z vec(1,3/2,1) $
 
 
 *Für $lambda_3 = 2 $*
@@ -493,6 +508,17 @@ Der Eigenvektor ist somit:
 
 $ v_3=k vec(-1,0,1) $
 
+Eigenvektoren:
+
+$ v_1 = t vec(1,0,1) , v_2=z vec(1,3/2,1) ,v_3=k vec(-1,0,1) $
+
+Dabei sind t,z und k beliebige Skalierungsfaktoren (t,z,k∈R).
+
+
+-> Determinantenverfahren 2x2 Matrix um die Eingenwerte zu berechenn
+
+1 bis 2 Eigenwerte einsetzen und damit dann $lambda_1$ bzw. $lambda_2$ in die Matrix einsetzen und damit den Eigenvektor berechnen über den Gauß-Algorythmus.
+
 -> Determinantenverfahren 2x2 Matrix um die Eingenwerte zu berechenn
 
 1 bis 2 Eigenwerte einsetzen und damit dann $lambda_1$ bzw. $lambda_2$ in die Matrix einsetzen und damit den Eigenvektor berechnen über den Gauß-Algorythmus.
@@ -503,7 +529,7 @@ $ v_3=k vec(-1,0,1) $
 
 == Python-Beispiele (Luis)
 
-= Anwendungen
+= *Anwendungen*
 
 == Google PageRank (Michael)
 Google PageRank ist ein Algorithmus, der von Google entwickelt wurde um Webseiten bei einer Suchanfrage zu bewerten und dementsprechend zu sortieren. Webseiten sind untereinander über Hyperlinks verbunden. Die Idee des Algorithmus ist nun, dass Webseiten, welche von mehreren anderen Webseiten referenziert werden als wichtiger eingestuft werden. Diese Wichtigkeit wird durch einen mathematischen Ansatz von Eigenwerten und Eigenvektoren definiert.
@@ -883,7 +909,7 @@ Datenanalyse (Wichtig für KI)
 
 #pagebreak()
 
-= Anhang
+= *Anhang*
 
 == Code zu @plot_eigen1
 
