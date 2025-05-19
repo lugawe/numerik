@@ -483,6 +483,8 @@ Dabei sind t,z und k beliebige Skalierungsfaktoren (t,z,k∈R).
 
 == Python-Beispiele
 
+In @beispiel_code1 sehen wir wie wir in Python mit Hilfe von NumPy Eigenwerte und Eigenvektoren berechnen.
+
 = *Anwendungen*
 
 == Google PageRank
@@ -741,3 +743,10 @@ $
 
 #let plot_eigen1 = read("plot_eigen1.py")
 #raw(plot_eigen1, lang: "python")
+
+#pagebreak()
+
+== Beispiel-Code 1 <beispiel_code1>
+
+#let beispiel_code1 = read("eigen.py")
+#raw(beispiel_code1, lang: "python")
