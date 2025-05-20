@@ -238,7 +238,7 @@ gefunden werden. Diese sind die Eigenvektoren von A zum Eigenwert λ
         2, 3-λ) =0 $
 
 Deshalb haben wir
-$ −λ(3−λ)−4=0⇒λ 2−3λ−4=0  $
+$ −λ(3−λ)−4=0⇒λ^2−3λ−4=0  $
 
 Wir erhalten zwei Eigenwerte:
 $ λ_1=4, λ_2=−1$
@@ -309,7 +309,7 @@ $  A - λ.I = mat(1−λ,2,-1;
  
 $   det(A- λ.I) = (1−λ).  det mat(3−λ ,0;
 2,1−λ;) - 0 dot det mat(2,-1;
-2, 1−λ;) +(-1) dot mat(2,-1;
+2, 1−λ;) +(-1) dot det mat(2,-1;
 3-λ,0;) $ 
 
 $ = (1−λ) dot [(3-λ) dot (1-λ)- 2 dot 0]  + (-1) dot [2 dot 0 - (-1) (3-λ)] $
