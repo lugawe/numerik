@@ -499,7 +499,7 @@ Dabei sind t,z und k beliebige Skalierungsfaktoren (t,z,k∈R).
 == Bemerkungen
 
 Eigenwerte können auch komplex sein. Wenn wir
-beispielsweise die Matrix $A = mat(0, -1; 1, 0)$ hernehmen und hiervon das charakteristische
+beispielsweise die Matrix $A = mat(0, -1; 1, 0)$ hernehmen und von dieser das charakteristische
 Polynom berechnen kommen wir auf
 
 $
@@ -508,11 +508,14 @@ $
 <==> & lambda^2 &&= -1
 $
 
-und hierbei sehen wir direkt, dass $lambda^2 = -1$ keine reelen Lösungen besitzt.
+und sehen hierbei direkt, dass $lambda^2 = -1$ keine reellen Lösungen besitzt.
 
-Eigenvektoren von unterschiedlichen Eigenwerten sind immer linear unabhängig voneinander
+Eigenvektoren die vielfache von einander sind stellen den "gleichen" Eigenvektor dar, denn es gilt:
 
-Eigenvektoren die skaliert sind sind die "gleichen" Eigenvektoren.
+$ A(x arrow(v)) = x A arrow(v) = x lambda arrow(v) = lambda (x arrow(v)) $
+
+Daraus folgt, dass Eigenvektoren von unterschiedlichen Eigenwerten immer linear unabhängig voneinander
+sind.
 
 == Python-Beispiele
 
