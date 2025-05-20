@@ -106,6 +106,8 @@ Ist $lambda < 0$ wird dazu noch die Richtung umgekehrt.
 Diese Längenunterschiede ergeben sich durch eine Skalierung, die sich durch die
 Gleichung $arrow(v)_text("skaliert") = lambda arrow(v)$ beschreiben lässt.
 
+\
+
 In @plot_eigen1 wird beispielsweise die Gleichung
 $mat(2, 1; 1, 2) dot vec(1, 1) = 3 dot vec(1, 1)$
 dargestellt.
@@ -114,6 +116,19 @@ dargestellt.
   image("plot_eigen1.png", width: 80%),
   caption: [Vektor und skalierter Vektor in $RR^2$],
 ) <plot_eigen1> \
+
+#pagebreak()
+
+In @plot_eigen2 wird beispielsweise die Gleichung
+$mat(-1, 0; 0, 2) dot vec(1, 0) = -1 dot vec(1, 0)$
+dargestellt. Hier ändert der Eigenvektor $vec(1, 0)$ seine Richtung wegen $lambda < 0$.
+Der grüne Vektor ist ein nicht Eigenvektor, sondern
+beschreibt $mat(-1, 0; 0, 2) dot vec(1, 1)$.
+
+#figure(
+  image("plot_eigen2.png", width: 80%),
+  caption: [Vektor und umgedrehter Vektor in $RR^2$],
+) <plot_eigen2> \
 
 Zur Veranschaulichung wurden die Vektoren in diesem Beispiel
 im $RR^2$ dargestellt, grundsätzlich ist das Konzept jedoch auch auf $RR^n$ übertragbar.
