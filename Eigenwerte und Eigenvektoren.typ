@@ -122,8 +122,8 @@ dargestellt.
 In @plot_eigen2 wird beispielsweise die Gleichung
 $mat(-1, 0; 0, 2) dot vec(1, 0) = -1 dot vec(1, 0)$
 dargestellt. Hier ändert der Eigenvektor $vec(1, 0)$ seine Richtung wegen $lambda < 0$.
-Der grüne Vektor ist ein nicht Eigenvektor, sondern
-beschreibt $mat(-1, 0; 0, 2) dot vec(1, 1)$.
+Der grüne Vektor ist kein Eigenvektor, sondern
+beschreibt $mat(-1, 0; 0, 2) dot vec(1, 1) = vec(-1, 2)$.
 
 #figure(
   image("plot_eigen2.png", width: 80%),
