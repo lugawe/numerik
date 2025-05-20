@@ -784,6 +784,11 @@ Ein Bild der Größe $m times n$ kann als ein Vektor in $RR^(m times n)$ betrach
 
 Je nach Wahl von $k$ erhält man eine gute Annäherung an das Original mit deutlich weniger gespeicherten Zahlen.
 
+#figure(
+  image("kompression_example1.png", width: 40%),
+  caption: [Kompression und Rekonstruktion],
+) <kompression_example1> \
+
 #let kompression_example1 = read("kompression_example1.py")
 #raw(kompression_example1, lang: "python")
 
