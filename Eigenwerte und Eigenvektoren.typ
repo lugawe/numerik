@@ -760,7 +760,32 @@ $
 
 #pagebreak()
 
-== Kompression & Bildverarbeitung
+== Kompression
+
+In vielen Anwendungen – von der Bild- und Videobearbeitung bis zur Signalanalyse – spielt die effiziente Speicherung und Übertragung großer Datenmengen eine zentrale Rolle. Eine elegante Methode zur Daten­kompression nutzt ebenfalls die Zerlegung in Eigenwerte und Eigenvektoren. Die Grundidee ist, dass echte Datensätze in einem geeigneten Koordinatensystem meist nur wenige dominante Richtungen (Eigenvektoren) besitzen, während alle anderen Komponenten vernachlässigbar klein sind.
+
+=== Idee der Dimensionsreduktion
+
+Gegeben sei eine Datenmatrix $A in R^(m times n)$, deren Spalten einzelne Beobachtungen darstellen. 
+
+1. Wir berechnen zunächst die Kovarianzmatrix $C = (1/n) dot A dot A^T$.  
+2. Anschließend bestimmen wir die Eigenpaare $(lambda_i, v_i) "von" C$, sortiert nach absteigenden Eigenwerten $lambda_1 ≥ lambda_2 ≥ ... ≥ lambda_m$.  
+3. Die ersten $k$ Eigenvektoren $v_1$ bis $v_k$ fassen bereits den Großteil der Streuung zusammen.  
+4. Wir komprimieren die Daten, indem wir nur die Projektionen auf diese $k$ Eigenvektoren speichern:  
+   $"komprimierte Daten" = (v_1, …, v_k)^T dot A$  
+5. Zur Rekonstruktion multiplizieren wir die komprimierten Daten wieder mit $(v_1, …, v_k)$:  
+   rekonstruierte Daten = $(v_1, …, v_k) dot "komprimierte Daten"$
+
+Je kleiner $k$, *desto höher die Kompressionsrate*. Der entstehende *Informationsverlust* lässt sich durch die *Summe der weggelassenen Eigenwerte* quantifizieren.
+
+=== Beispiel Bildkompression
+
+Ein Bild der Größe $m times n$ kann als ein Vektor in $RR^(m times n)$ betrachtet werden oder blockweise verarbeitet werden. Durch das oben beschriebene Verfahren lassen sich die visuellen Daten stark reduzieren:
+
+Je nach Wahl von $k$ erhält man eine gute Annäherung an das Original mit deutlich weniger gespeicherten Zahlen.
+
+#let kompression_example1 = read("kompression_example1.py")
+#raw(kompression_example1, lang: "python")
 
 #pagebreak()
 
