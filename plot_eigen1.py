@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-M = np.array([[2, 1],
+A = np.array([[2, 1],
               [1, 2]])
 
 v = np.array([1, 1])
-lambda_v = M @ v # das Gleiche wie Eigenwert 3 * v
+lambda_v = A @ v  # das Gleiche wie Eigenwert 3 * v
 
 plt.figure()
 ax = plt.gca()
