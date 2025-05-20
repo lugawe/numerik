@@ -9,7 +9,7 @@ lambda_v = A @ v  # das Gleiche wie Eigenwert -1 * v
 
 random_v = A @ np.array([1, 1])
 
-plt.figure()
+plt.figure(figsize=(5, 5))
 ax = plt.gca()
 ax.set_xlim(-2, 2)
 ax.set_ylim(-1, 3)

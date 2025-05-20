@@ -7,7 +7,7 @@ A = np.array([[2, 1],
 v = np.array([1, 1])
 lambda_v = A @ v  # das Gleiche wie Eigenwert 3 * v
 
-plt.figure()
+plt.figure(figsize=(5, 5))
 ax = plt.gca()
 ax.set_xlim(-1, 5)
 ax.set_ylim(-1, 5)
