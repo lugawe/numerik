@@ -152,20 +152,19 @@ $
 Mit bekannten Resultaten uber die Lösbarkeit von quadratischen
 linearen Gleichungssysteme erhalten wir:
 
-$ λ "ist Eigenwert von" A <==> "Ker"(A − λ E n) "ist nicht-trivial" $  
+$ λ "ist Eigenwert von" A <==>&& "Ker"(A − λ E n) "ist nicht-trivial" \ 
+  <==> &&A − λ E n  " ist nicht invertierbar"\
+  <==> && det(A − λ E_n) = 0 $  
 
-Das bedeutet: Ein Skalar λ ist Eigenwert von A, wenn der Kern (Nullraum) der Matrix $A−λ E_n$ nicht-trivial ist, also mehr als nur den Nullvektor enthält.
-
-$ <==> A − λ E n "ist nicht invertierbar" $ 
-
-Eine Matrix ist invertierbar genau dann, wenn ihr Kern nur den Nullvektor enthält. Da hier der Kern nicht-trivial ist, ist $A−λ E_n$
-
-$ <==> det(A − λ E n) = 0 $  
-Eine Matrix ist genau dann invertierbar, wenn ihre Determinante ungleich Null ist. Ist die Determinante Null, so ist die Matrix singulär und damit nicht invertierbar.
-
-\
-Daher gilt für die Eigenwerte λ von A die sogenannte charakteristische Gleichung:
-$ det(A − λ E n) = 0 $ 
+*Begründung:* Sei λ∈R ein Skalar. Wir betrachten die Gleichung
+$ (A−λ E_n)x=0.  $
+Damit diese Gleichung eine nicht-triviale Lösung $𝑥≠0 $ besitzt, darf die Matrix $A−λ E_n$ nicht invertierbar sein.
+Denn wäre $A−λ E_n$ *invertierbar*, so könnte man beide Seiten der Gleichung mit der Inversen multiplizieren:
+$ x=(A−λ E_n)^(−1) dot 0=0, $
+und es gäbe nur die triviale Lösung x=0, also kein Eigenwert.
+Daher folgt:
+Eine nicht-triviale Lösung existiert genau dann, wenn die Matrix nicht invertierbar ist (singulär). Und das ist genau dann der Fall, wenn gilt:
+$ det(A − λ E_n) = 0  $
 
 Diese Gleichung stellt ein Polynom n-ten Grades in λ dar, das *charakteristische Polynom* von A genannt wird.
 $ #table(  [$P_A$(λ) = $det(A − λ E_n)$ ] )  $ 
@@ -175,6 +174,7 @@ Um die Eigenwerte zu bestimmen, löst man dieses Polynom nach
 
 Da das charakteristische Polynom vom Grad n ist, hat es höchstens 
 n Nullstellen. Das bedeutet, dass die Matrix A höchstens n Eigenwerte besitzt.
+
 
 *Beispiel 1*
 
