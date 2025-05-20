@@ -494,13 +494,33 @@ $ v_1 = t vec(1,0,1) , v_2=z vec(1,3/2,1) ,v_3=k vec(-1,0,1) $
 
 Dabei sind t,z und k beliebige Skalierungsfaktoren (t,z,k∈R).
 
+#pagebreak()
 
+== Bemerkungen
+
+Eigenwerte können auch komplex sein. Wenn wir
+beispielsweise die Matrix $A = mat(0, -1; 1, 0)$ hernehmen und hiervon das charakteristische
+Polynom berechnen kommen wir auf
+
+$
+& det ( A - lambda E_2 ) &&= 0 \
+<==> & det mat(0 - lambda, -1; 1, 0 -lambda) &&= 0 = lambda^2 + 1 \
+<==> & lambda^2 &&= -1
+$
+
+und hierbei sehen wir direkt, dass $lambda^2 = -1$ keine reelen Lösungen besitzt.
+
+Eigenvektoren von unterschiedlichen Eigenwerten sind immer linear unabhängig voneinander
+
+Eigenvektoren die skaliert sind sind die "gleichen" Eigenvektoren.
 
 == Python-Beispiele
 
 In @beispiel_code1 sehen wir wie wir in Python mit Hilfe von NumPy Eigenwerte und Eigenvektoren berechnen.
 
-= *Anwendungen*
+#pagebreak()
+
+= Anwendungen
 
 == Google PageRank
 Google PageRank ist ein Algorithmus, der von Google entwickelt wurde um Webseiten bei einer Suchanfrage zu bewerten und dementsprechend zu sortieren. Webseiten sind untereinander über Hyperlinks verbunden. Die Idee des Algorithmus ist nun, dass Webseiten, welche von mehreren anderen Webseiten referenziert werden als wichtiger eingestuft werden. Diese Wichtigkeit wird durch einen mathematischen Ansatz von Eigenwerten und Eigenvektoren definiert.
