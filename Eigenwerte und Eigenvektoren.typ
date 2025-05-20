@@ -238,7 +238,7 @@ gefunden werden. Diese sind die Eigenvektoren von A zum Eigenwert λ
         2, 3-λ) =0 $
 
 Deshalb haben wir
-$ −λ(3−λ)−4=0⇒λ 2−3λ−4=0  $
+$ −λ(3−λ)−4=0⇒λ^2−3λ−4=0  $
 
 Wir erhalten zwei Eigenwerte:
 $ λ_1=4, λ_2=−1$
