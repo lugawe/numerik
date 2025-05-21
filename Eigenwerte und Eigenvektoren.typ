@@ -835,3 +835,5 @@ Je nach Wahl von $k$ erhält man eine gute Annäherung an das Original mit deutl
 
 - Keller, A. Handout Eigenwerte, Spektralsatz. THWS, 2025.
 - M. Turk & A. Pentland, „Eigenfaces for Recognition“, Journal of Cognitive Neuroscience, Vol. 3, No. 1, 1991, S. 71–86.
+- Guido Walz, Eigenwerte und Eigenvektoren von Matrizen, Klarzext für NIchtmathematiker. 2025
+- 2 Bayen, A. and Kong, Q. and Siauw, T. Python Programming and Numerical Methods. Academic Press, 1. Edition, 2020.
