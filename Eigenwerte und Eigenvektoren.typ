@@ -828,3 +828,9 @@ Je nach Wahl von $k$ erhält man eine gute Annäherung an das Original mit deutl
 
 #let beispiel_code3 = read("poly.py")
 #raw(beispiel_code3, lang: "python")
+
+#pagebreak()
+
+= Quellen
+
+- Herr Keller Skript - 2025
