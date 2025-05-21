@@ -517,6 +517,9 @@ $ A(x arrow(v)) = x A arrow(v) = x lambda arrow(v) = lambda (x arrow(v)) $
 Daraus folgt, dass Eigenvektoren von unterschiedlichen Eigenwerten immer linear unabhängig voneinander
 sind.
 
+Die Spur einer Matrix,
+also die Summe der Elemente auf der Hauptdiagonale, ist gleich der Summe der Eigenwerte.
+
 == Python-Beispiele
 
 In @beispiel_code1 sehen wir wie wir in Python mit Hilfe von NumPy Eigenwerte und Eigenvektoren berechnen.
