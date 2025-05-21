@@ -524,6 +524,11 @@ also die Summe der Elemente auf der Hauptdiagonale, ist gleich der Summe der Eig
 
 In @beispiel_code1 sehen wir wie wir in Python mit Hilfe von NumPy Eigenwerte und Eigenvektoren berechnen.
 
+In @beispiel_code2 sehen wir wie wir in Python mit Hilfe von NumPy die Determinante berechnen.
+
+In @beispiel_code3 sehen wir wie wir in Python mit Hilfe von NumPy und SymPy das charakteristische
+Polynom berechnen.
+
 #pagebreak()
 
 = Anwendungen
@@ -800,10 +805,6 @@ Je nach Wahl von $k$ erhält man eine gute Annäherung an das Original mit deutl
 
 #pagebreak()
 
-== Ausblick in die Wissenschaft
-
-#pagebreak()
-
 = Anhang
 
 == Code zu @plot_eigen1
@@ -817,3 +818,13 @@ Je nach Wahl von $k$ erhält man eine gute Annäherung an das Original mit deutl
 
 #let beispiel_code1 = read("eigen.py")
 #raw(beispiel_code1, lang: "python")
+
+== Beispiel-Code 2 <beispiel_code2>
+
+#let beispiel_code2 = read("det.py")
+#raw(beispiel_code2, lang: "python")
+
+== Beispiel-Code 3 <beispiel_code3>
+
+#let beispiel_code3 = read("poly.py")
+#raw(beispiel_code3, lang: "python")
