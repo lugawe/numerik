@@ -797,10 +797,6 @@ Je nach Wahl von $k$ erhält man eine gute Annäherung an das Original mit deutl
 
 #pagebreak()
 
-== Datenanalyse (Wichtig für KI)
-
-#pagebreak()
-
 == Ausblick in die Wissenschaft
 
 #pagebreak()
