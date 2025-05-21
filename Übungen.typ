@@ -94,7 +94,8 @@ $ λ_1=-2, λ_2=1, λ_3=2 $\
 Eigenvektoren bestimmen
 
 $ (A−λ I)⋅v=0 $
-Für λ=−2:
+*Für λ=−2:*
+
 $A- (-2).I= mat(3-(-2), -1,0;
 2,0-(-2),0;
 -2,2,-2-(-2)) =  mat(5, -1,0;
@@ -106,14 +107,14 @@ $ mat(5, -1,0;
 2,2,0;
 -2,2,0)dot vec(x_1,x_2,x_3) =0$
 
-$−2x+2x_2=0⇒x=x_2$
+$−2x_1+2x_2=0⇒x_1=x_2$
 
-$2x+2x_2=0⇒x=−x_2⇒x=y "und" x=−x_2⇒x=x_2=0$
+$2x_1+2x_2=0⇒x_1=−x_2⇒x_1=x_2 "und" x_1=−x_2⇒x_1=x_2=0$
 
-Daher ist x=y=0, z beliebig ⇒ Eigenvektor:
+Daher ist $x_1=x_2=0$, z beliebig ⇒ Eigenvektor:
 $v_1=k_1 dot vec(0,0,1)$
 
-Für λ=1:
+*Für λ=1:*
 
 $A- (1).I= mat(3-1, -1,0;
 2,0-1,0;
@@ -129,10 +130,10 @@ $ mat(2, -1,0;
 
 ereste Gleichung:
 
-$2x−x_2=0⇒x_2=2x$
+$2x_1−x_2=0⇒x_2=2x_1$
 
 Dritte:
-$−2x+2x_2−3x_3=0⇒−2x+4x−3x_3=0⇒2x=3⇒x_3= 2/3x$
+$−2x_1+2x_2−3x_3=0⇒−2x_1+4x_1−3x_3=0⇒2x_1=3⇒x_3= 2/3x_1$
 
 ⇒ Eigenvektor:
 $v_2=k_2 dot vec(1,2,2/3)$
@@ -151,11 +152,11 @@ $ mat(1, -1,0;
 
 Erste Gleichung:
 
-$x−y=0⇒x=y$
+$x−x_2=0⇒x=x_2$
 
 Dritte:
 
-$−2x+2y−4z=0⇒−4z=0⇒z=0$
+$−2x_1+2x_2−4x_3=0⇒−4x_3=0⇒x_3=0$
 
 ⇒ Eigenvektor:
 
@@ -172,5 +173,3 @@ $λ_1=-2:v_1 = k_1 dot vec(0,0,1)$
 $λ_2=1:v_2=k_2 dot vec(1,2,2/3)$
 
 $λ_3=2 :v_3= k_3 dot vec(1,1,0)$
-
-
