@@ -833,4 +833,5 @@ Je nach Wahl von $k$ erhält man eine gute Annäherung an das Original mit deutl
 
 = Quellen
 
-- Herr Keller Skript - 2025
+- Keller, A. Handout Eigenwerte, Spektralsatz. THWS, 2025.
+- M. Turk & A. Pentland, „Eigenfaces for Recognition“, Journal of Cognitive Neuroscience, Vol. 3, No. 1, 1991, S. 71–86.
