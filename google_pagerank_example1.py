@@ -9,15 +9,20 @@ M = np.array([
   [0,     0,   1,   0,   0    ],  # Netflix
 ])
 
-def compute_pagerank(M, iterations=100):
+def compute_pagerank(M, iterations=100, alpha=0.85):
   n = M.shape[0]
-  p = np.ones(n)
+  p = np.ones(n) / n        
   history = np.zeros((iterations + 1, n))
   history[0] = p
+
+  teleport = np.ones(n) / n
   for k in range(1, iterations + 1):
-    p = p.dot(M)
+    p = alpha * (p.dot(M)) + (1 - alpha) * teleport
+    p = p / p.sum()
     history[k] = p
+
   return history
+
 
 iterations = 20
 history = compute_pagerank(M, iterations)
