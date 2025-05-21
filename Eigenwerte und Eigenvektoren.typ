@@ -769,6 +769,9 @@ $
 )
 $
 
+#let google_pagerank_example1 = read("google_pagerank_example1.py")
+#raw(google_pagerank_example1, lang: "python")
+
 #pagebreak()
 
 == Kompression
